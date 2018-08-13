@@ -12,7 +12,6 @@ import FavoriteContainer from './components/Posts/FavoriteContainer'
 
 class App extends Component {
   render() {
-    console.log(111111, this.props)
     return (
       <div>
         {

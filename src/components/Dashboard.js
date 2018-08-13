@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 // import axios from 'axios'
-import Header from './Header'
+import './CSS/Dashboard.css'
 
 class Dashboard extends Component {
     // constructor() {

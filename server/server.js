@@ -8,6 +8,9 @@ require('dotenv').config()
 const app = express()
 const port = 4200
 
+//controllers
+const AuthCtrl = require('./controllers/AuthCtrl')
+
 massive(process.env.CONNECTION_SESSION ).then( db => {
     app.set('db', db)
     console.log(`Never gonna run around and desert db!`)
@@ -21,7 +24,8 @@ app.use(session({
 app.use(bodyParser.json())
 
 
-//app.get('/', )
+app.get('/auth/callback', AuthCtrl.auth)
+app.get('/api/currentUser', AuthCtrl.currentUser)
 //app.post('/', )
 //app.put('/', )
 //app.delete('/', )
