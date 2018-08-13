@@ -3,14 +3,6 @@ import React, { Component } from 'react'
 import './CSS/Dashboard.css'
 
 class Dashboard extends Component {
-    // constructor() {
-    //     super()
-
-    //     this.state = {
-
-    //     }
-    // }
-
 
     render() {
         return (

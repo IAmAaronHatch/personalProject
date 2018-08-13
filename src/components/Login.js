@@ -4,7 +4,7 @@ import './CSS/Login.css'
 import { Link } from 'react-router-dom'
 
 class Login extends Component {
-    
+
     login = () => {
         let auth0domain = `https://${process.env.REACT_APP_AUTH0_DOMAIN}`
         let clientId = process.env.REACT_APP_AUTH0_CLIENT_ID
@@ -14,6 +14,7 @@ class Login extends Component {
         let location = `${auth0domain}/authorize?client_id=${clientId}&scope=${scope}&redirect_uri=${redirectUri}&response_type=code`
 
         window.location = location
+        console.log(this.props)
     }
 
     render() {
@@ -25,7 +26,7 @@ class Login extends Component {
                         <div>Logo</div>
                     </div>
                     <div className='lower-login-container'>
-                        <button className='login-button'>Login</button>
+                        <button className='login-button' onClick={this.login}>Login</button>
                         <button className='login-button'>Register</button>
                     </div>
                 </div>
