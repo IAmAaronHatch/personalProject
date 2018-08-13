@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import './CSS/Login.css'
-// import axios from 'axios'
 import { Link } from 'react-router-dom'
 
 class Login extends Component {
@@ -27,11 +26,11 @@ class Login extends Component {
                     </div>
                     <div className='lower-login-container'>
                         <button className='login-button' onClick={this.login}>Login</button>
-                        <button className='login-button'>Register</button>
+                        <button className='login-button' onClick={this.login}>Register</button>
+                        <Link to='/'><button className='login-button-small'>Login as Guest</button></Link>
                     </div>
                 </div>
 
-                <Link to='/'><button>Dashboard</button></Link>
             </div>
         )
     }

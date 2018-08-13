@@ -40,6 +40,11 @@ module.exports = {
     },
 
     currentUser: (req, res) => {
-        req.send(req.session.user)
+        res.send(req.session.user)
+    },
+
+    logout: (req, res) => {
+        req.session.destroy()
+        res.sendStatus(200)
     }
 }

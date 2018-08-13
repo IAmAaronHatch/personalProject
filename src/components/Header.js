@@ -2,6 +2,9 @@ import React, { Component } from 'react'
 // import axios from 'axios'
 import './CSS/Header.css'
 import { Link } from 'react-router-dom'
+import { connect } from 'react-redux'
+
+import { logout } from '../redux/reducers/user'
 
 import Navbar from './Navbar'
 
@@ -23,17 +26,27 @@ class Header extends Component {
                 </div>
 
                 <div className='header-icons-right'>
-                    <Link to='/login'><button>Login</button></Link>
                     <Link to='/'><button>Home</button></Link>
                     <Link to='/posts'><button>Posts</button></Link>
                     <Link to='/favorites'><button>Favorites</button></Link>
+                    {
+                        this.props.user ?
+                            <Link to='/login'><button onClick={this.props.logout}>Logout</button></Link> :
+                            <Link to='/login'><button>Login</button></Link>
+                    }
                 </div>
             </div>
         )
     }
 }
 
-export default Header
+let mapStateToProps = state => {
+    return {
+        user: state.user.data
+    }
+}
 
-// css notes
+export default connect(mapStateToProps, { logout })(Header)
+
+                    // css notes
 // make sure to hide the different links and only display the logo, because all of these options will be in the navbar

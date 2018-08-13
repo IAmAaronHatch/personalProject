@@ -26,6 +26,7 @@ app.use(bodyParser.json())
 
 app.get('/auth/callback', AuthCtrl.auth)
 app.get('/api/currentUser', AuthCtrl.currentUser)
+app.get('/api/logout', AuthCtrl.logout)
 //app.post('/', )
 //app.put('/', )
 //app.delete('/', )
