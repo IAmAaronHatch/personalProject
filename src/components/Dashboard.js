@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 // import axios from 'axios'
-import Navbar from './Navbar'
+import Header from './Header'
 
 class Dashboard extends Component {
     // constructor() {
@@ -16,8 +16,6 @@ class Dashboard extends Component {
         return (
             <div>   
                 DASHBOARD
-
-                <div><Navbar/></div>
             </div>
         )
     }

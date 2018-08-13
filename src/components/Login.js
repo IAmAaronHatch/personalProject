@@ -17,7 +17,7 @@ class Login extends Component {
             <div>
                 Login
 
-                <Link to='/dashboard'><button>Dashboard</button></Link>
+                <Link to='/'><button>Dashboard</button></Link>
             </div>
         )
     }

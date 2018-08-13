@@ -1,35 +1,37 @@
 import React, { Component } from 'react';
-// import logo from './logo.svg';
 import './App.css';
-import { HashRouter, Route, Switch } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
+import { withRouter } from 'react-router'
+
+
 import Login from './components/Login'
 import Dashboard from './components/Dashboard'
+import Header from './components/Header'
+import PostContainer from './components/Posts/PostContainer'
+import FavoriteContainer from './components/Posts/FavoriteContainer'
 
 class App extends Component {
   render() {
+    console.log(111111, this.props)
     return (
       <div>
-       <HashRouter>
-         <div>
-           <Switch>
-             <Route exact path='/' component={Login}/>
-             <Route path='/dashboard' component={Dashboard}/>
-           </Switch>
-         </div>
-         {/* <div>
-           <Swicth>
-             <Route />
-             <Route />
-             <Route />
-           </Swicth>
-         </div> */}
-       </HashRouter>
+        {
+          (this.props.location.pathname !== '/login') ?
+            <Header /> :
+            null
+        }
+        <Switch>
+          <Route exact path='/' component={Dashboard} />
+          <Route path='/login' component={Login} />
+          <Route path='/posts' component={PostContainer} />
+          <Route path='/favorites' component={FavoriteContainer} />
+        </Switch>
       </div>
     );
   }
 }
 
-export default App;
+export default withRouter(App)
 
 
 
