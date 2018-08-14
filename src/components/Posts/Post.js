@@ -2,22 +2,31 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 
-function Post(props) {
+class Post extends React.Component {
     // console.log(111111, this.props)
-    return (
-        <div>
-            {
-                props.post && <div>
-                    <h1>{props.post.title}</h1>
-                    <p>{props.post.author}</p>
-                    <br />
-                    <p>{props.post.content}</p>
-                </div>
-            }
+    constructor(props) {
+        super(props)
 
-            <Link to='/posts'><button>Back</button></Link>
-        </div>
-    )
+        this.state = {
+            
+        }
+    }
+    render() {
+        return (
+            <div>
+                {
+                    props.post && <div>
+                        <h1>{props.post.title}</h1>
+                        <p>{props.post.author}</p>
+                        <br />
+                        <p>{props.post.content}</p>
+                    </div>
+                }
+
+                <Link to='/posts'><button>Back</button></Link>
+            </div>
+        )
+    }
 }
 
 let mapStateToProps = (state, props) => {
@@ -27,3 +36,4 @@ let mapStateToProps = (state, props) => {
 }
 
 export default connect(mapStateToProps)(Post)
+

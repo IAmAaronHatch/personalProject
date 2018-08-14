@@ -26,5 +26,32 @@ module.exports = {
             console.log ('error creating post', error) 
             res.status(500).send(error)
         }
+    },
+
+    update: async (req, res) => {
+        try {
+            let db = req.app.get('db')
+            let { id } = req.params
+            let { title, content } = req.body
+
+            let updatedPosts = await db.updatePost([title, content, id])
+            res.send(updatedPosts)
+        } catch (error) {
+            console.log('error updating post', error)
+            res.status(500).send(error)
+        }
+    },
+
+    delete: async (req, res) => {
+        try {
+            let db = req.app.get('db')
+            let { id } = req.params
+
+            let deletedPost = await db.deletePost([id])
+            res.send(deletedPost)
+        } catch (error) {
+            console.log('error deleting post', error)
+            res.status(500).send(error)
+        }
     }
 }

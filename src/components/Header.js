@@ -18,7 +18,7 @@ class Header extends Component {
                 </div>
 
                 {/* If in desktop view */}
-                {/* <div className='header-icons-right'>
+                <div className='header-icons-right'>
                     <Link to='/'><button>Home</button></Link>
                     <Link to='/posts'><button>Posts</button></Link>
                     <Link to='/favorites'><button>Favorites</button></Link>
@@ -32,7 +32,7 @@ class Header extends Component {
                         <p>{this.props.user.name}{this.props.user.picture}</p> :
                         null
                     }
-                </div> */}
+                </div>
 
                 <div>
                     Logo

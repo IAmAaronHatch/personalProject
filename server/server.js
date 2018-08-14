@@ -32,6 +32,8 @@ app.get('/api/logout', AuthCtrl.logout)
 //Posts 
 app.get('/api/posts', PostCtrl.read)
 app.post('/api/post', PostCtrl.create)
+app.put('/api/post/:id', PostCtrl.update)
+app.delete('/api/post/:id', PostCtrl.delete)
 
 
 app.listen( port, () => {
