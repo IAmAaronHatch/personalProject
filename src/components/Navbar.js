@@ -5,19 +5,40 @@ import { connect } from 'react-redux'
 import { logout } from '../redux/reducers/user'
 
 class Navbar extends Component {
+    constructor(){
+        super()
+
+        this.state ={
+            navOpen: false
+        }
+    }
+
+    toggleNav = (e) => {
+        this.setState({
+            navOpen: !this.state.navOpen
+        })
+    }
 
     render() {
         return (
             <div>
                 <div>
-                    <button>☰</button>
+                    <button onClick={this.toggleNav}>☰</button>
                 </div>
 
                 {/* Mobile */}
+
+                {
+                    this.state.navOpen ?
                 <div className='navbar-icons-mobile'>
-                {/* <ul>
-                    <li></li>
-                </ul> */}
+                    {
+                        this.props.user ?
+                        <div>
+                            <p>{this.props.user.name}</p> 
+                            {/* <img src={this.props.user.profile_pic}/> */}
+                        </div> :
+                            null
+                    }
                     <Link to='/'><button>Home</button></Link>
                     <Link to='/posts'><button>Posts</button></Link>
                     <Link to='/favorites'><button>Favorites</button></Link>
@@ -27,12 +48,10 @@ class Navbar extends Component {
                             <Link to='/login'><button onClick={this.props.logout}>Logout</button></Link> :
                             <Link to='/login'><button>Login</button></Link>
                     }
-                    {/* {
-                        this.props.user ?
-                            <p>{this.props.user.name}{this.props.user.picture}</p> :
-                            null
-                    } */}
-                </div>
+                </div> :
+                null
+
+                }
             </div>
         )
     }
@@ -45,3 +64,4 @@ let mapStateToProps = state => {
 }
 
 export default connect(mapStateToProps, { logout })(Navbar)
+
