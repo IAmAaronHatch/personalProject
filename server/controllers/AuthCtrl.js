@@ -28,7 +28,7 @@ module.exports = {
                 req.session.user = users[0]
                 res.redirect('/')
             } else {
-                // console.log(userInfo)
+                console.log(userInfo)
                 let users = await db.createUser(userInfo)
                 req.session.user = users[0]
                 res.redirect('/')

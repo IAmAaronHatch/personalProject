@@ -25,6 +25,7 @@ class Header extends Component {
                     <Navbar />
                 </div>
 
+                {/* If in desktop view */}
                 <div className='header-icons-right'>
                     <Link to='/'><button>Home</button></Link>
                     <Link to='/posts'><button>Posts</button></Link>
@@ -34,6 +35,15 @@ class Header extends Component {
                             <Link to='/login'><button onClick={this.props.logout}>Logout</button></Link> :
                             <Link to='/login'><button>Login</button></Link>
                     }
+                    {
+                        this.props.user ?
+                        <p>{this.props.user.name}{this.props.user.picture}</p> :
+                        null
+                    }
+                </div>
+
+                <div>
+                    Logo
                 </div>
             </div>
         )

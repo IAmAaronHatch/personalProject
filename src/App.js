@@ -9,6 +9,7 @@ import { getUser } from './redux/reducers/user'
 import Login from './components/Login'
 import Dashboard from './components/Dashboard'
 import Header from './components/Header'
+import Genres from './components/Genres'
 import PostContainer from './components/Posts/PostContainer'
 import FavoriteContainer from './components/Posts/FavoriteContainer'
 
@@ -32,6 +33,7 @@ class App extends Component {
           <Route path='/login' component={Login} />
           <Route path='/posts' component={PostContainer} />
           <Route path='/favorites' component={FavoriteContainer} />
+          <Route path='/genres' component={Genres} />
         </Switch>
       </div>
     );

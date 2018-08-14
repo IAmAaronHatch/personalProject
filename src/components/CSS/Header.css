@@ -16,9 +16,9 @@
     justify-content: center;
 }
 
-/* .header-icons-right {
+.header-icons-right {
     display: none;
-} */
+}
 
 
 @media(min-width: 600px){
