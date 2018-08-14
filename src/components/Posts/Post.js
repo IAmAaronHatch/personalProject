@@ -41,7 +41,7 @@ class Post extends React.Component {
                         <p>{this.props.post.content}</p>
                     </div>
                 }
-                <button onClick={() => this.props.deletePost(this.props.post.id)}>Delete Post</button>
+                <Link to='/posts'><button onClick={() => this.props.deletePost(this.props.post.id)}>Delete Post</button></Link>
 
                 <Link to='/posts'><button>Back</button></Link>
             </div>

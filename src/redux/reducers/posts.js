@@ -26,7 +26,7 @@ export default function reducer(state = initialState, action) {
         case UPDATE_POST_FULFILLED:
             return { ...state, data: action.payload.data }
         case DELETE_POST_FULFILLED:
-            return { ...state, data: []}
+            return { ...state, data: action.payload.data}
         default:
             return state
     }
