@@ -32,7 +32,8 @@ app.get('/api/logout', AuthCtrl.logout)
 //Posts 
 app.get('/api/posts', PostCtrl.read)
 app.post('/api/post', PostCtrl.create)
-app.put('/api/post/:id', PostCtrl.update)
+app.put('/api/post/title/:id', PostCtrl.updateTitle)
+app.put('/api/post/content/:id', PostCtrl.updateContent)
 app.delete('/api/post/:id', PostCtrl.delete)
 
 

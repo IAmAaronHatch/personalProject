@@ -2,26 +2,46 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 
+import { updatePost } from '../../redux/reducers/posts'
+import { deletePost } from '../../redux/reducers/posts'
+
 class Post extends React.Component {
     // console.log(111111, this.props)
     constructor(props) {
         super(props)
 
         this.state = {
-            
+            updateOpen: false
         }
+    }
+
+    toggleUpdatePost = (e) => {
+        this.setState ({
+            updateOpen: !this.state.updateOpen
+        })
+        console.log(this.state.updateOpen)
     }
     render() {
         return (
             <div>
                 {
-                    props.post && <div>
-                        <h1>{props.post.title}</h1>
-                        <p>{props.post.author}</p>
+                    this.props.post && <div>
+                        <h1>{this.props.post.title}</h1>
+                        <button onClick={this.toggleUpdatePost}>✎</button>
+                        {
+                            this.state.updateOpen ?
+                            <div>
+                                <input />
+                                <button>Update Title</button>
+                            </div> :
+                            null
+                        }
+                        <p>{this.props.post.author}</p>
                         <br />
-                        <p>{props.post.content}</p>
+                        <p>{this.props.post.content}</p>
                     </div>
                 }
+                <button onClick={() => this.props.deletePost(this.props.post.id)}>Delete Post</button>
 
                 <Link to='/posts'><button>Back</button></Link>
             </div>
@@ -35,5 +55,5 @@ let mapStateToProps = (state, props) => {
     return { post }
 }
 
-export default connect(mapStateToProps)(Post)
+export default connect(mapStateToProps, { updatePost, deletePost })(Post)
 

@@ -28,16 +28,29 @@ module.exports = {
         }
     },
 
-    update: async (req, res) => {
+    updateTitle: async (req, res) => {
         try {
             let db = req.app.get('db')
             let { id } = req.params
-            let { title, content } = req.body
+            let { title } = req.body
 
-            let updatedPosts = await db.updatePost([title, content, id])
+            let updatedPosts = await db.updateTitle([title, id])
             res.send(updatedPosts)
         } catch (error) {
-            console.log('error updating post', error)
+            console.log('error updating post title', error)
+            res.status(500).send(error)
+        }
+    },
+    updateContent: async (req, res) => {
+        try {
+            let db = req.app.get('db')
+            let { id } = req.params
+            let { content } = req.body
+
+            let updatedPosts = await db.updatePost([content, id])
+            res.send(updatedPosts)
+        } catch (error) {
+            console.log('error updating post content', error)
             res.status(500).send(error)
         }
     },

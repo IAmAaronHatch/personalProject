@@ -29,7 +29,7 @@ class Header extends Component {
                     }
                     {
                         this.props.user ?
-                        <p>{this.props.user.name}{this.props.user.picture}</p> :
+                        <p>{this.props.user.name}</p> :
                         null
                     }
                 </div>
@@ -43,6 +43,7 @@ class Header extends Component {
 }
 
 let mapStateToProps = state => {
+    console.log(1111, state)
     return {
         user: state.user.data
     }
