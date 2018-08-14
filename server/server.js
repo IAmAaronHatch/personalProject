@@ -10,6 +10,7 @@ const port = 4200
 
 //controllers
 const AuthCtrl = require('./controllers/AuthCtrl')
+const PostCtrl = require('./controllers/PostCtrl')
 
 massive(process.env.CONNECTION_SESSION ).then( db => {
     app.set('db', db)
@@ -23,14 +24,14 @@ app.use(session({
 }))
 app.use(bodyParser.json())
 
-
+//Authentication
 app.get('/auth/callback', AuthCtrl.auth)
 app.get('/api/currentUser', AuthCtrl.currentUser)
 app.get('/api/logout', AuthCtrl.logout)
-//app.post('/', )
-//app.put('/', )
-//app.delete('/', )
 
+//Posts 
+app.get('/api/posts', PostCtrl.read)
+app.post('/api/post', PostCtrl.create)
 
 
 app.listen( port, () => {

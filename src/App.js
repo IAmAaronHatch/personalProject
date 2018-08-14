@@ -31,9 +31,10 @@ class App extends Component {
         <Switch>
           <Route exact path='/' component={Dashboard} />
           <Route path='/login' component={Login} />
-          <Route path='/posts' component={PostContainer} />
-          <Route path='/favorites' component={FavoriteContainer} />
           <Route path='/genres' component={Genres} />
+          <Route path='/posts' component={PostContainer} />
+          {/* <Route path='/' */}
+          <Route path='/favorites' component={FavoriteContainer} />
         </Switch>
       </div>
     );
