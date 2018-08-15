@@ -12,6 +12,7 @@ import Header from './components/Header'
 import Genres from './components/Genres'
 import PostContainer from './components/Posts/PostContainer'
 import FavoriteContainer from './components/Posts/FavoriteContainer'
+import CreatePost from './components/Posts/CreatePost';
 
 
 class App extends Component {
@@ -33,7 +34,7 @@ class App extends Component {
           <Route path='/login' component={Login} />
           <Route path='/genres' component={Genres} />
           <Route path='/posts' component={PostContainer} />
-          {/* <Route path='/' */}
+          <Route path='/form' component={CreatePost} />
           <Route path='/favorites' component={FavoriteContainer} />
         </Switch>
       </div>

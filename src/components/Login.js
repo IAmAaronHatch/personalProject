@@ -22,12 +22,13 @@ class Login extends Component {
                 <div className='login-container'>
                     <div className='upper-login-container'>
                         <div className='login-icon'>logo picture</div>
-                        <div>Logo</div>
+                        <div className='logo'>Logo</div>
                     </div>
                     <div className='lower-login-container'>
                         <button className='login-button' onClick={this.login}>Login</button>
-                        <button className='login-button' onClick={this.login}>Register</button>
+                        <hr />
                         <Link to='/'><button className='login-button-small'>Login as Guest</button></Link>
+                        <button className='night-toggle'>☾</button>
                     </div>
                 </div>
 

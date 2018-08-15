@@ -15,6 +15,7 @@ class Header extends Component {
             <div className='header-main'>
                 <div className='header-icons-left'>
                     <Navbar />
+                    <h1>Logo</h1>
                 </div>
 
                 {/* If in desktop view */}
@@ -29,14 +30,11 @@ class Header extends Component {
                     }
                     {
                         this.props.user ?
-                        <p>{this.props.user.name}</p> :
-                        null
+                            <p>{this.props.user.name}</p> :
+                            null
                     }
                 </div>
 
-                <div>
-                    Logo
-                </div>
             </div>
         )
     }

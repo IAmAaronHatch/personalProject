@@ -1,0 +1,27 @@
+.posts-main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.posts-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 350px;
+    height: 10vh;
+    border: solid black 1px;
+    margin: 20px;
+}
+
+.custom-overlay {
+  background: rgba(241, 238, 238, 0.137);
+}
+.custom-modal {
+  background: whitesmoke;
+  max-width: 500px;
+  width: 100%;
+  height: 400px;
+}

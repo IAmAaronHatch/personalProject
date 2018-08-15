@@ -7,6 +7,7 @@ import { getPosts } from '../../redux/reducers/posts'
 import Posts from './Posts'
 import Post from './Post'
 
+
 class PostContainer extends Component {
     
     componentDidMount(){

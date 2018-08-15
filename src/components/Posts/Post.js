@@ -41,19 +41,12 @@ class Post extends React.Component {
                         <p>{this.props.post.content}</p>
                     </div>
                 }
-                <Link to='/posts'><button onClick={() => this.props.deletePost(this.props.post.id)}>Delete Post</button></Link>
-
-                <Link to='/posts'><button>Back</button></Link>
+                <Link to='/posts'><button onClick={() => {this.props.deletePost(this.props.post.id); this.props.close } }>Delete Post</button></Link>
             </div>
         )
     }
 }
 
-let mapStateToProps = (state, props) => {
-    let { id } = props.match.params
-    let post = state.posts.data.find(post => +post.id === +id)
-    return { post }
-}
 
-export default connect(mapStateToProps, { updatePost, deletePost })(Post)
+export default connect(null, { updatePost, deletePost })(Post)
 

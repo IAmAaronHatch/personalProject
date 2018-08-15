@@ -36,6 +36,9 @@ app.put('/api/post/title/:id', PostCtrl.updateTitle)
 app.put('/api/post/content/:id', PostCtrl.updateContent)
 app.delete('/api/post/:id', PostCtrl.delete)
 
+//Extras
+app.get('/api/posts', PostCtrl.readByPoints)
+
 
 app.listen( port, () => {
     console.log(`Never gonna give ${port} up, Never gonna let ${port} down.`)

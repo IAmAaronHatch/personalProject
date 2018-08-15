@@ -1,57 +1,71 @@
+
+
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
+import Modal from 'react-responsive-modal'
 
 import { logout } from '../redux/reducers/user'
 
+import './CSS/Navbar.css'
+
 class Navbar extends Component {
-    constructor(){
+    constructor() {
         super()
 
-        this.state ={
-            navOpen: false
+        this.state = {
+            open: false
         }
     }
 
-    toggleNav = (e) => {
-        this.setState({
-            navOpen: !this.state.navOpen
-        })
+    onOpenModal = () => {
+        this.setState({ open: true })
+    }
+
+    onCloseModal = () => {
+        this.setState({ open: false })
+    }
+
+    combineOnClick = () => {
+        this.props.logout()
+        this.onCloseModal()
     }
 
     render() {
+        const { open } = this.state
         return (
             <div>
                 <div>
-                    <button onClick={this.toggleNav}>☰</button>
+                    <button onClick={this.onOpenModal}>☰</button>
                 </div>
 
-                {/* Mobile */}
+                <Modal open={open} onClose={this.onCloseModal} center classNames={{ overlay: 'custom-overlay', modal: 'custom-modal' }}>
+                    <div className='navbar-icons-mobile'>
+                        {
+                            this.props.user ?
+                                <div>
+                                    <p>{this.props.user.name}</p>
+                                    {/* <img src={this.props.user.profile_pic}/> */}
+                                </div> :
+                                null
+                        }
+                        <Link to='/'><button onClick={this.onCloseModal}>Home</button></Link>
+                        <Link to='/posts'><button onClick={this.onCloseModal}>Posts</button></Link>
+                        {
+                            this.props.user ?
+                                <Link to='/favorites'><button onClick={this.onCloseModal}>Favorites</button></Link> :
+                                null
 
-                {
-                    this.state.navOpen ?
-                <div className='navbar-icons-mobile'>
-                    {
-                        this.props.user ?
-                        <div>
-                            <p>{this.props.user.name}</p> 
-                            {/* <img src={this.props.user.profile_pic}/> */}
-                        </div> :
-                            null
-                    }
-                    <Link to='/'><button>Home</button></Link>
-                    <Link to='/posts'><button>Posts</button></Link>
-                    <Link to='/favorites'><button>Favorites</button></Link>
-                    <Link to='/genres'><button>Genres</button></Link>
-                    {
-                        this.props.user ?
-                            <Link to='/login'><button onClick={this.props.logout}>Logout</button></Link> :
-                            <Link to='/login'><button>Login</button></Link>
-                    }
-                </div> :
-                null
+                        }
+                        <Link to='/genres'><button onClick={this.onCloseModal}>Genres</button></Link>
+                        {
+                            this.props.user ?
+                                <Link to='/login'><button onClick={this.combineOnClick}>Logout</button></Link> :
+                                <Link to='/login'><button onClick={this.onCloseModal}>Login</button></Link>
+                        }
+                    </div>
+                </Modal>
 
-                }
             </div>
         )
     }
@@ -64,4 +78,3 @@ let mapStateToProps = state => {
 }
 
 export default connect(mapStateToProps, { logout })(Navbar)
-

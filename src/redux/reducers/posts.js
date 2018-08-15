@@ -20,8 +20,9 @@ const DELETE_POST_FULFILLED = 'DELETE_POST_FULFILLED'
 export default function reducer(state = initialState, action) {
     switch (action.type) {
         case GET_POSTS_FULFILLED:
-            return { ...state, data: action.payload.data }
+        return { ...state, data: action.payload.data }
         case CREATE_POST_FULFILLED:
+        console.log(action.payload)
             return { ...state, data: action.payload.data }
         case UPDATE_POST_FULFILLED:
             return { ...state, data: action.payload.data }
@@ -39,10 +40,10 @@ export function getPosts() {
     }
 }
 
-export function createPost() {
+export function createPost(title, content) {
     return {
         type: CREATE_POST,
-        payload: axios.post('/api/post')
+        payload: axios.post('/api/post', {title, content})
     }
 }
 

@@ -1,6 +1,6 @@
 .header-main {
-    background-color: aqua;
-    height: 10vh;
+    background-color: whitesmoke;
+    height: 20vh;
     width: auto;
     display: flex;
     flex-direction: row;
@@ -8,9 +8,9 @@
 }
 
 .header-icons-left {
-    background-color: aquamarine;
+    background-color: whitesmoke;
     height: 100%;
-    width: 30%;
+    width: 40%;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -18,20 +18,25 @@
 
 .header-icons-right {
     display: none;
+    
 }
 
 
 @media(min-width: 600px){
-.header-icons-left {
-    display: none;
-}
-
-.header-icons-right {
-    background-color: blue;
-    height: 100%;
-    width: 70%;
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-}
+    .header-main{
+        height: 10vh;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+    }
+    .header-icons-left{
+        width: 10%;
+        display: flex;
+        justify-content: space-around;
+    }
+    .header-icons-right{
+        width: 30%;
+        display: flex;
+        justify-content: space-around;
+    }
 }
