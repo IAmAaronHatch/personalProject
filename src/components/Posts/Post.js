@@ -51,7 +51,7 @@ class Post extends React.Component {
                         <p>Written By: {this.props.post.author}</p>
                     </div>
                 }
-                <Link to='/posts'><button onClick={() => {this.props.deletePost(this.props.post.id); this.props.close } }>Delete Post</button></Link>
+                <Link to='/posts'><button onClick={() => this.props.deletePost(this.props.post.id)}>Delete Post</button></Link>
             </div>
         )
     }

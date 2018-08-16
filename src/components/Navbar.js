@@ -44,7 +44,7 @@ class Navbar extends Component {
                         {
                             this.props.user ?
                                 <div>
-                                    <p>{this.props.user.name}</p>
+                                    <Link to='/usersettings' onClick={this.onCloseModal}><p>{this.props.user.name}</p></Link>
                                     {/* <img src={this.props.user.profile_pic}/> */}
                                 </div> :
                                 null

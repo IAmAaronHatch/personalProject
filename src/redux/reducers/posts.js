@@ -29,7 +29,6 @@ export default function reducer(state = initialState, action) {
             })
             return { ...state, data: postsWithModalBoolean }
         case CREATE_POST_FULFILLED:
-        console.log(action.payload)
             return { ...state, data: action.payload.data }
         case UPDATE_POST_FULFILLED:
             return { ...state, data: action.payload.data }
