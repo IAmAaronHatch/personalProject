@@ -11,6 +11,7 @@ const port = 4200
 //controllers
 const AuthCtrl = require('./controllers/AuthCtrl')
 const PostCtrl = require('./controllers/PostCtrl')
+const CommentCtrl = require('./controllers/CommentCtrl')
 
 massive(process.env.CONNECTION_SESSION ).then( db => {
     app.set('db', db)
@@ -35,6 +36,15 @@ app.post('/api/post', PostCtrl.create)
 app.put('/api/post/title/:id', PostCtrl.updateTitle)
 app.put('/api/post/content/:id', PostCtrl.updateContent)
 app.delete('/api/post/:id', PostCtrl.delete)
+
+//Comments
+app.get('/api/posts/:postId/comments', CommentCtrl.readComment)
+app.put('/api/posts/:postId/comments/:id')
+
+// app.get('/api/comments/:id', CommentCtrl.readComment)
+app.post('/api/comment/:id', CommentCtrl.createComment)
+// app.put('/api/comments/:id', CommentCtrl.updateComment)
+app.delete('/api/comments/:id', CommentCtrl.deleteComment)
 
 //Extras
 app.get('/api/posts', PostCtrl.readByPoints)
