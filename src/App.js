@@ -25,13 +25,13 @@ class App extends Component {
     return (
       <div>
         {
-          (this.props.location.pathname !== '/login') ?
+          (this.props.location.pathname !== '/') ?
             <Header /> :
             null
         }
         <Switch>
-          <Route exact path='/' component={Dashboard} />
-          <Route path='/login' component={Login} />
+          <Route path='/home' component={Dashboard} />
+          <Route exact path='/' component={Login} />
           <Route path='/genres' component={Genres} />
           <Route path='/posts' component={PostContainer} />
           <Route path='/form' component={CreatePost} />

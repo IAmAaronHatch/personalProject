@@ -49,7 +49,7 @@ class Navbar extends Component {
                                 </div> :
                                 null
                         }
-                        <Link to='/'><button onClick={this.onCloseModal}>Home</button></Link>
+                        <Link to='/home'><button onClick={this.onCloseModal}>Home</button></Link>
                         <Link to='/posts'><button onClick={this.onCloseModal}>Posts</button></Link>
                         {
                             this.props.user ?
@@ -60,8 +60,8 @@ class Navbar extends Component {
                         <Link to='/genres'><button onClick={this.onCloseModal}>Genres</button></Link>
                         {
                             this.props.user ?
-                                <Link to='/login'><button onClick={this.combineOnClick}>Logout</button></Link> :
-                                <Link to='/login'><button onClick={this.onCloseModal}>Login</button></Link>
+                                <Link to='/'><button onClick={this.combineOnClick}>Logout</button></Link> :
+                                <Link to='/'><button onClick={this.onCloseModal}>Login</button></Link>
                         }
                     </div>
                 </Modal>

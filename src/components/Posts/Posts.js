@@ -6,26 +6,20 @@ import Post from './Post'
 
 import '../CSS/Posts.css'
 
+import { openModal, closeModal } from '../../redux/reducers/posts'
+
 
 class Posts extends React.Component {
-    constructor(props) {
-        super(props)
 
-        this.state = {
-            open: false
-        }
+    onOpenModal = (post) => {
+        post.openModal = true
     }
 
-    onOpenModal = () => {
-        this.setState({ open: true })
-    }
-
-    onCloseModal = () => {
-        this.setState({ open: false })
+    onCloseModal = (post) => {
+        post.openModal = false
     }
 
     render() {
-        const { open } = this.state
         return (
             <div className='posts-main'>
                 <div>
@@ -41,11 +35,11 @@ class Posts extends React.Component {
                     {this.props.posts.map(post => {
                         return (
                             <div key={post.id} className='posts-box'>
-                                    <h3 onClick={this.onOpenModal}>{post.title}</h3>
+                                    <h3 onClick={() => this.props.openModal(post.id)}>{post.title}</h3>
                                     <p>author: {post.author}</p>
-                                <Modal open={open} onClose={this.onCloseModal} center classNames={{ overlay: 'custom-overlay', modal: 'custom-modal' }}>
+                                <Modal open={post.openModal} onClose={this.props.closeModal} center classNames={{ overlay: 'custom-overlay', modal: 'custom-modal' }}>
                                     <div>
-                                        <Post post={post} close={this.onCloseModal}/>
+                                        <Post post={post} close={this.props.closeModal}/>
                                     </div>
                                 </Modal>
                             </div>
@@ -64,4 +58,4 @@ let mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps)(Posts)
+export default connect(mapStateToProps, {openModal, closeModal})(Posts)

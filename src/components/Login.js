@@ -13,7 +13,6 @@ class Login extends Component {
         let location = `${auth0domain}/authorize?client_id=${clientId}&scope=${scope}&redirect_uri=${redirectUri}&response_type=code`
 
         window.location = location
-        console.log(this.props)
     }
 
     render() {
@@ -27,7 +26,7 @@ class Login extends Component {
                     <div className='lower-login-container'>
                         <button className='login-button' onClick={this.login}>Login</button>
                         <hr />
-                        <Link to='/'><button className='login-button-small'>Login as Guest</button></Link>
+                        <Link to='/home'><button className='login-button-small'>Login as Guest</button></Link>
                         <button className='night-toggle'>☾</button>
                     </div>
                 </div>

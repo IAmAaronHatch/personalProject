@@ -26,12 +26,12 @@ module.exports = {
 
             if (users.length) {
                 req.session.user = users[0]
-                res.redirect('/')
+                res.redirect('/#/home')
             } else {
                 console.log(userInfo)
                 let users = await db.createUser(userInfo)
                 req.session.user = users[0]
-                res.redirect('/')
+                res.redirect('/#/home')
             }
         } catch (error) {
             console.log('we have a problem authorizing', error)

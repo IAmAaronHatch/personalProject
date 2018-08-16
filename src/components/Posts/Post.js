@@ -15,11 +15,11 @@ class Post extends React.Component {
         }
     }
 
+
     toggleUpdatePost = (e) => {
         this.setState ({
             updateOpen: !this.state.updateOpen
         })
-        console.log(this.state.updateOpen)
     }
     render() {
         return (
@@ -36,9 +36,19 @@ class Post extends React.Component {
                             </div> :
                             null
                         }
-                        <p>{this.props.post.author}</p>
+                        
                         <br />
                         <p>{this.props.post.content}</p>
+                        <button onClick={this.toggleUpdatePost}>✎</button>
+                        {
+                            this.state.updateOpen ?
+                                <div>
+                                    <textarea />
+                                    <button>Update Content</button>
+                                </div> :
+                                null
+                        }
+                        <p>Written By: {this.props.post.author}</p>
                     </div>
                 }
                 <Link to='/posts'><button onClick={() => {this.props.deletePost(this.props.post.id); this.props.close } }>Delete Post</button></Link>

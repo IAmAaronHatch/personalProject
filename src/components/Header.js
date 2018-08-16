@@ -25,8 +25,8 @@ class Header extends Component {
                     <Link to='/favorites'><button>Favorites</button></Link>
                     {
                         this.props.user ?
-                            <Link to='/login'><button onClick={this.props.logout}>Logout</button></Link> :
-                            <Link to='/login'><button>Login</button></Link>
+                            <Link to='/'><button onClick={this.props.logout}>Logout</button></Link> :
+                            <Link to='/'><button>Login</button></Link>
                     }
                     {
                         this.props.user ?
