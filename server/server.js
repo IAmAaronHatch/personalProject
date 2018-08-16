@@ -32,6 +32,7 @@ app.get('/api/logout', AuthCtrl.logout)
 
 //Posts 
 app.get('/api/posts', PostCtrl.read)
+app.get('/api/popular-posts', PostCtrl.readByPoints)
 app.post('/api/post', PostCtrl.create)
 app.put('/api/post/title/:id', PostCtrl.updateTitle)
 app.put('/api/post/content/:id', PostCtrl.updateContent)

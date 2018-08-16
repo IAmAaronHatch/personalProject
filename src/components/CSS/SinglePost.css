@@ -1,0 +1,30 @@
+.title-container {
+    background-color: aqua;
+    display: flex;
+    flex-direction: column
+}
+
+.user-info {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.title-info {
+    display: flex;
+    flex-direction: row;
+}
+
+.content-container {
+    background-color: blue
+}
+
+.comment-container {
+    background-color: blueviolet
+}
+
+.profile-pic{
+    height: 30px;
+    width: 30px;
+    border-radius: 100%;
+}

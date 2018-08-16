@@ -8,6 +8,8 @@ let initialState = {
 const GET_POSTS = 'GET_POSTS'
 const GET_POSTS_FULFILLED = 'GET_POSTS_FULFILLED'
 
+const GET_POPULAR_POSTS = 'GET_POPULAR_POSTS'
+
 const CREATE_POST = 'CREATE_POST'
 const CREATE_POST_FULFILLED = 'CREATE_POST_FULFILLED'
 
@@ -28,6 +30,8 @@ export default function reducer(state = initialState, action) {
                 return post
             })
             return { ...state, data: postsWithModalBoolean }
+        case GET_POPULAR_POSTS + FULFULLED:
+            return { ...state, data: action.payload.data }
         case CREATE_POST_FULFILLED:
             return { ...state, data: action.payload.data }
         case UPDATE_POST_FULFILLED:
@@ -59,6 +63,12 @@ export function getPosts() {
     return {
         type: GET_POSTS,
         payload: axios.get('/api/posts')
+    }
+}
+export function getPostsByPoints() {
+    return {
+        type: GET_POSTS,
+        payload: axios.get('/api/popular-posts')
     }
 }
 

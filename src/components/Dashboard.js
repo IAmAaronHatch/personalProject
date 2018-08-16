@@ -4,10 +4,13 @@ import './CSS/Dashboard.css'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 
-
+import { logout } from '../redux/reducers/user'
+import { getPostsByPoints } from '../redux/reducers/posts'
 
 class Dashboard extends Component {
-
+    componentDidMount(){
+        this.props.getPostsByPoints()
+    }
     render() {
         return (
             <div className='dashboard-main'>  
@@ -16,7 +19,10 @@ class Dashboard extends Component {
                         <Link to='/'><button onClick={this.props.logout}>Logout</button></Link> :
                         <Link to='/'><button>Login</button></Link>
                 } 
-                Dashboard
+                <div>
+                    <h3>Check Out Our Popular Posts!</h3>
+
+                </div>
             </div>
         )
     }
@@ -24,8 +30,9 @@ class Dashboard extends Component {
 
 let mapStateToProps = state => {
     return {
-        user: state.user.data
+        user: state.user.data,
+        posts: state.posts.data
     }
 }
 
-export default connect(mapStateToProps)(Dashboard)
+export default connect(mapStateToProps, { logout, getPostsByPoints })(Dashboard)
