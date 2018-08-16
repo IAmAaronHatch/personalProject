@@ -30,6 +30,9 @@ class CreatePost extends Component {
                 <textarea cols='40' rows='2' placeholder='Title' onChange={this.handleTitle}/>
                 <textarea cols='40' rows='20' placeholder='Content' onChange={this.handleContent}/>
                 <Link to='/posts'><button onClick={() => this.props.createPost(this.state.title, this.state.content)}>Create Post</button></Link>
+
+                <br/>
+                <Link to='/posts'><button>Cancel</button></Link>
             </div>
         )
     }
