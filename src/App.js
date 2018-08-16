@@ -14,7 +14,8 @@ import PostContainer from './components/Posts/PostContainer'
 import FavoriteContainer from './components/Posts/FavoriteContainer'
 import CreatePost from './components/Posts/CreatePost';
 import Settings from './components/Settings';
-// import BottomNav from './components/BottomNavbar'
+import BottomNav from './components/BottomNavbar'
+import Poll from './components/Poll';
 
 
 class App extends Component {
@@ -33,7 +34,7 @@ class App extends Component {
               null
           }
         </div>
-        <div>
+        <div className='components-contain'>
           <Switch>
             <Route exact path='/' component={Login} />
             <Route path='/home' component={Dashboard} />
@@ -42,16 +43,17 @@ class App extends Component {
             <Route path='/form' component={CreatePost} />
             <Route path='/favorites' component={FavoriteContainer} />
             <Route path='/usersettings' component={Settings} />
+            <Route path='/poll' component={Poll} />
           </Switch>
         </div>
 
-        {/* <div className='app-bottomnav'>
+        <div className='app-bottomnav'>
           {
             (this.props.location.pathname !== '/') ?
               <BottomNav /> :
               null
           }
-        </div> */}
+        </div>
       </div>
     );
   }

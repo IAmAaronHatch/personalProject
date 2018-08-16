@@ -9,7 +9,14 @@
 }
 
 .app-bottomnav {
-  display: flex;
+	display: flex;
+	/* position: fixed;
+	bottom: 0;
+	left: 0; */
+}
+
+.components-contain {
+	padding-bottom: 50px;
 }
 
 @keyframes App-logo-spin {

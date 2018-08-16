@@ -1,6 +1,6 @@
 .header-main {
     background-color: whitesmoke;
-    height: 20vh;
+    height: 10vh;
     width: auto;
     display: flex;
     flex-direction: row;
@@ -29,11 +29,7 @@
         align-items: center;
         justify-content: space-around;
     }
-    .header-icons-left{
-        width: 10%;
-        display: flex;
-        justify-content: space-around;
-    }
+    
     .header-icons-right{
         width: 30%;
         display: flex;

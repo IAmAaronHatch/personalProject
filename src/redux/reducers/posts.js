@@ -15,7 +15,7 @@ const UPDATE_POST = 'UPDATE_POST'
 const UPDATE_POST_FULFILLED = 'UPDATE_POST_FULFILLED'
 
 const DELETE_POST = 'DELETE_POST'
-const DELETE_POST_FULFILLED = 'DELETE_POST_FULFILLED'
+const FULFULLED = '_FULFILLED'
 
 const OPEN_MODAL = 'OPEN_MODAL'
 const CLOSE_MODAL = 'CLOSE_MODAL'
@@ -32,7 +32,7 @@ export default function reducer(state = initialState, action) {
             return { ...state, data: action.payload.data }
         case UPDATE_POST_FULFILLED:
             return { ...state, data: action.payload.data }
-        case DELETE_POST_FULFILLED:
+        case DELETE_POST + FULFULLED:
             return { ...state, data: action.payload.data}
         case OPEN_MODAL:
             let data = state.data.map(post => {

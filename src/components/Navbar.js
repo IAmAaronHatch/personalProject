@@ -35,7 +35,7 @@ class Navbar extends Component {
         const { open } = this.state
         return (
             <div>
-                <div>
+                <div className='nav-click'>
                     <button onClick={this.onOpenModal}>☰</button>
                 </div>
 
