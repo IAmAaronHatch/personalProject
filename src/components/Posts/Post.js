@@ -2,7 +2,8 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 
-import { updatePost } from '../../redux/reducers/posts'
+import { updateTitle } from '../../redux/reducers/posts'
+import { updateContent } from '../../redux/reducers/posts'
 import { deletePost } from '../../redux/reducers/posts'
 
 import { getComments } from '../../redux/reducers/comments'
@@ -15,14 +16,26 @@ class Post extends React.Component {
         super(props)
 
         this.state = {
-            updateOpen: false
+            updateOpen: false,
+            title: '',
+            content: ''
         }
     }
 
-    componentDidMount(){
-        this.props.getComments()
+    componentDidMount() {
+        this.props.getComments(this.props.post.id)
     }
 
+    handleTitle = (e) => {
+        this.setState({
+            title: e.target.value
+        })
+    }
+    handleContent = (e) => {
+        this.setState({
+            content: e.target.value
+        })
+    }
 
     toggleUpdatePost = (e) => {
         this.setState({
@@ -31,11 +44,11 @@ class Post extends React.Component {
     }
     render() {
         return (
-            <div>
+            <div className='post-main'>
                 <div className='title-container'>
                     <div className='user-info'>
                         <p>Author/ {this.props.post.author}</p>
-                        
+
                     </div>
                     <div className='title-info'>
                         <h1>{this.props.post.title}</h1>
@@ -43,32 +56,42 @@ class Post extends React.Component {
                         {
                             this.state.updateOpen ?
                                 <div>
-                                    <textarea />
-                                    <button>Update Title</button>
+                                    <textarea onChange={this.handleTitle} />
+                                    <button onClick={() => this.props.updateTitle(this.props.post.id)}>Update Title</button>
+                                    <Link to='/posts'><button onClick={() => this.props.deletePost(this.props.post.id)}>Delete Post</button></Link>
                                 </div> :
                                 null
                         }
                     </div>
-
                 </div>
+
                 <div className='content-container'>
                     <p>{this.props.post.content}</p>
                     {
                         this.state.updateOpen ?
                             <div>
-                                <textarea />
-                                <button>Update Content</button>
+                                <textarea onChange={this.handleContent} />
+                                <button onClick={() => this.props.updateContent(this.props.post.id)}>Update Content</button>
                             </div> :
                             null
                     }
-
-
                 </div>
+
                 <div className='comment-container'>
-                    {/* <p>{this.props.comment.comment}</p> */}
+                    <h3>Comments:</h3>
+                    {this.props.comments.map(comment => {
+                        return (
+                            <div key={comment.id}>
+                                <h4>"{comment.comment}"</h4>
+                                <p>Commented by: {comment.commenter}</p>
+                            </div>
+                        )
+                    })}
+
+                    <input placeholder='Comment'/>
+                    <input type='submit' hidden/>
                 </div>
 
-                <Link to='/posts'><button onClick={() => this.props.deletePost(this.props.post.id)}>Delete Post</button></Link>
             </div>
         )
     }
@@ -76,12 +99,13 @@ class Post extends React.Component {
 
 let mapStateToProps = state => {
     return {
-        user: state.user.data
+        user: state.user.data,
+        comments: state.comments.data
     }
 }
 
 
-export default connect(mapStateToProps, { updatePost, deletePost, getComments })(Post)
+export default connect(mapStateToProps, { updateTitle, updateContent, deletePost, getComments })(Post)
 
 
 // import React from 'react'

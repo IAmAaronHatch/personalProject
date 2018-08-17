@@ -11,8 +11,9 @@
     justify-content: center;
     flex-direction: column;
     width: 350px;
-    height: 10vh;
+    height: 15vh;
     border: solid black 1px;
+    border-radius: 2px;
     margin: 20px;
 }
 
@@ -24,4 +25,5 @@
   max-width: 500px;
   width: 100%;
   height: 650px;
+  overflow: scroll;
 }

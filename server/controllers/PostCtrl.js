@@ -58,7 +58,7 @@ module.exports = {
             let { id } = req.params
             let { content } = req.body
 
-            let updatedPosts = await db.updatePost([content, id])
+            let updatedPosts = await db.updateContent([content, id])
             res.send(updatedPosts)
         } catch (error) {
             console.log('error updating post content', error)

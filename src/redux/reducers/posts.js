@@ -14,8 +14,8 @@ const GET_POPULAR_POSTS = 'GET_POPULAR_POSTS'
 const CREATE_POST = 'CREATE_POST'
 const CREATE_POST_FULFILLED = 'CREATE_POST_FULFILLED'
 
-const UPDATE_POST = 'UPDATE_POST'
-const UPDATE_POST_FULFILLED = 'UPDATE_POST_FULFILLED'
+const UPDATE_TITLE = "UPDATE_TITLE"
+const UPDATE_CONTENT = "UPDATE_CONTENT"
 
 const DELETE_POST = 'DELETE_POST'
 const FULFULLED = '_FULFILLED'
@@ -37,7 +37,9 @@ export default function reducer(state = initialState, action) {
             return { ...state, data: action.payload.data }
         case CREATE_POST_FULFILLED:
             return { ...state, data: action.payload.data }
-        case UPDATE_POST_FULFILLED:
+        case UPDATE_TITLE + FULFULLED:
+            return { ...state, data: action.payload.data }
+        case UPDATE_CONTENT + FULFULLED:
             return { ...state, data: action.payload.data }
         case DELETE_POST + FULFULLED:
             return { ...state, data: action.payload.data}
@@ -84,10 +86,17 @@ export function createPost(title, content) {
     }
 }
 
-export function updatePost(id) {
+export function updateTitle (id) {
     return {
-        type: UPDATE_POST,
-        payload: axios.put(`/api/post/${id}`)
+        type: UPDATE_TITLE,
+        payload: axios.put(`/api/post/title/${id}`)
+    }
+}
+
+export function updateContent (id) {
+    return {
+        type: UPDATE_TITLE,
+        payload: axios.put(`/api/post/content/${id}`)
     }
 }
 

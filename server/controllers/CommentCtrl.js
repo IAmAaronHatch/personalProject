@@ -2,6 +2,7 @@ module.exports = {
     readComment: async (req, res) => {
         try {
             let db = req.app.get('db')
+            let postId = req.params.postId
             let comments = await db.getComments(postId)
 
             res.send(comments)

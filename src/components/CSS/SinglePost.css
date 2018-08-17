@@ -1,7 +1,12 @@
+
+.post-main {
+    padding-top: 20px;
+}
+
 .title-container {
-    background-color: aqua;
     display: flex;
-    flex-direction: column
+    flex-direction: column;
+    padding: 5px;
 }
 
 .user-info {
@@ -16,15 +21,11 @@
 }
 
 .content-container {
-    background-color: blue
+    padding: 5px;
+
 }
 
 .comment-container {
-    background-color: blueviolet
+    padding: 5px;
 }
 
-.profile-pic{
-    height: 30px;
-    width: 30px;
-    border-radius: 100%;
-}
