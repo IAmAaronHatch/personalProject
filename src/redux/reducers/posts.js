@@ -2,7 +2,8 @@
 import axios from 'axios'
 
 let initialState = {
-    data: []
+    data: [],
+    favorites: []
 }
 
 const GET_POSTS = 'GET_POSTS'
@@ -21,6 +22,8 @@ const FULFULLED = '_FULFILLED'
 
 const OPEN_MODAL = 'OPEN_MODAL'
 const CLOSE_MODAL = 'CLOSE_MODAL'
+
+const GET_FAVORITES = 'GET_FAVORITES'
 
 export default function reducer(state = initialState, action) {
     switch (action.type) {
@@ -54,6 +57,8 @@ export default function reducer(state = initialState, action) {
                 return post
             })
             return { ...state, data: posts }
+        case GET_FAVORITES + FULFULLED:
+            return { ...state, favorites: action.payload }
         default:
             return state
     }
@@ -103,5 +108,12 @@ export function openModal (postId) {
 export function closeModal () {
     return {
         type: CLOSE_MODAL
+    }
+}
+
+export function getFavorites (postId) {
+    return {
+        type: GET_FAVORITES,
+        payload: axios.get('/api/posts/:postId/favorites')
     }
 }

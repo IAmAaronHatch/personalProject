@@ -5,6 +5,8 @@ import { Link } from 'react-router-dom'
 import { updatePost } from '../../redux/reducers/posts'
 import { deletePost } from '../../redux/reducers/posts'
 
+import { getComments } from '../../redux/reducers/comments'
+
 import '../CSS/SinglePost.css'
 
 class Post extends React.Component {
@@ -15,6 +17,10 @@ class Post extends React.Component {
         this.state = {
             updateOpen: false
         }
+    }
+
+    componentDidMount(){
+        this.props.getComments()
     }
 
 
@@ -28,7 +34,6 @@ class Post extends React.Component {
             <div>
                 <div className='title-container'>
                     <div className='user-info'>
-                        <img className='profile-pic' src={this.props.user.profile_pic} alt='profile-pic'/>
                         <p>Author/ {this.props.post.author}</p>
                         
                     </div>
@@ -60,7 +65,7 @@ class Post extends React.Component {
 
                 </div>
                 <div className='comment-container'>
-                    comments section
+                    {/* <p>{this.props.comment.comment}</p> */}
                 </div>
 
                 <Link to='/posts'><button onClick={() => this.props.deletePost(this.props.post.id)}>Delete Post</button></Link>
@@ -76,7 +81,7 @@ let mapStateToProps = state => {
 }
 
 
-export default connect(mapStateToProps, { updatePost, deletePost })(Post)
+export default connect(mapStateToProps, { updatePost, deletePost, getComments })(Post)
 
 
 // import React from 'react'

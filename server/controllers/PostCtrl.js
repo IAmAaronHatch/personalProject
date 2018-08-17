@@ -77,5 +77,17 @@ module.exports = {
             console.log('error deleting post', error)
             res.status(500).send(error)
         }
+    },
+
+    getFavorites: async (req, res) => {
+        try {
+            let db = req.app.get('db')
+            // let { id } = req.params
+
+            let  favorites = db.getFavorites(postId)
+        } catch (error) {
+            console.log('error getting favorite post', error)
+            res.status(500).send(error)
+        }
     }
 }

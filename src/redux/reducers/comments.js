@@ -17,9 +17,9 @@ export default function reducer(state = initialState, action) {
     }
 }
 
-export function getComments(id) {
+export function getComments(postId) {
     return {
         type: GET_COMMENTS,
-        payload: axios.get(`/api/comments/${id}`)
+        payload: axios.get(`/api/posts/${postId}/comments`)
     }
 }

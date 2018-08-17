@@ -4,7 +4,8 @@ create table users (
     username varchar(14),
     email varchar,
     password varchar(16),
-    profile_pic text
+    profile_pic text,
+    favorites integer references posts
 );
 
 select * from users;
