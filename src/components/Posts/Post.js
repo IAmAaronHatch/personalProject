@@ -57,7 +57,7 @@ class Post extends React.Component {
                             this.state.updateOpen ?
                                 <div>
                                     <textarea onChange={this.handleTitle} />
-                                    <button onClick={() => this.props.updateTitle(this.props.post.id)}>Update Title</button>
+                                    <button onClick={() => this.props.updateTitle(this.state.title)}>Update Title</button>
                                     <Link to='/posts'><button onClick={() => this.props.deletePost(this.props.post.id)}>Delete Post</button></Link>
                                 </div> :
                                 null
@@ -71,7 +71,7 @@ class Post extends React.Component {
                         this.state.updateOpen ?
                             <div>
                                 <textarea onChange={this.handleContent} />
-                                <button onClick={() => this.props.updateContent(this.props.post.id)}>Update Content</button>
+                                <button onClick={() => this.props.updateContent(this.state.content)}>Update Content</button>
                             </div> :
                             null
                     }

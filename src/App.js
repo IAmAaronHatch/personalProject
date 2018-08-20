@@ -9,13 +9,13 @@ import { getUser } from './redux/reducers/user'
 import Login from './components/Login'
 import Dashboard from './components/Dashboard'
 import Header from './components/Header'
-import Genres from './components/Genres'
 import PostContainer from './components/Posts/PostContainer'
 import FavoriteContainer from './components/Posts/FavoriteContainer'
 import CreatePost from './components/Posts/CreatePost';
 import Settings from './components/Settings';
 import BottomNav from './components/BottomNavbar'
 import Poll from './components/Poll';
+import Message from './components/Message'
 
 
 class App extends Component {
@@ -38,7 +38,7 @@ class App extends Component {
           <Switch>
             <Route exact path='/' component={Login} />
             <Route path='/home' component={Dashboard} />
-            <Route path='/genres' component={Genres} />
+            <Route path='/message' component={Message} />
             <Route path='/posts' component={PostContainer} />
             <Route path='/form' component={CreatePost} />
             <Route path='/favorites' component={FavoriteContainer} />

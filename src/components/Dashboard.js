@@ -12,22 +12,18 @@ class Dashboard extends Component {
     }
     render() {
         return (
-            <div className='dashboard-main'>  
-                
+            <div className='dashboard-main'>    
                 <div>
                     <h3>Check Out Our Popular Posts!</h3>
-
                 </div>
             </div>
         )
     }
 }
-
 let mapStateToProps = state => {
     return {
         user: state.user.data,
         posts: state.posts.data
     }
 }
-
 export default connect(mapStateToProps, { getPostsByPoints })(Dashboard)

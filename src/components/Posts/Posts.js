@@ -35,12 +35,12 @@ class Posts extends React.Component {
                     {this.props.posts.map(post => {
                         return (
                             <div key={post.id} className='posts-box'>
-                                    <h3 onClick={() => this.props.openModal(post.id)}>{post.title}</h3>
-                                    <hr/>
-                                    <p>author: {post.author}</p>
+                                <h3 onClick={() => this.props.openModal(post.id)}>{post.title}</h3>
+                                <hr />
+                                <p>author: {post.author}</p>
                                 <Modal open={post.openModal} onClose={this.props.closeModal} center classNames={{ overlay: 'custom-overlay', modal: 'custom-modal' }}>
                                     <div>
-                                        <Post post={post} close={this.props.closeModal}/>
+                                        <Post post={post} close={this.props.closeModal} />
                                     </div>
                                 </Modal>
                             </div>
@@ -59,4 +59,4 @@ let mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps, {openModal, closeModal})(Posts)
+export default connect(mapStateToProps, { openModal, closeModal })(Posts)
