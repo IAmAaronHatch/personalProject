@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 
+import { socketConnect } from 'socket.io-react'
+
 class Message extends Component {
     constructor() {
         super()
@@ -19,4 +21,6 @@ class Message extends Component {
     }
 }
 
-export default Message
+//this.props.socket
+
+export default socketConnect(Message)

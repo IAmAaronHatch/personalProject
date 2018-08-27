@@ -2,10 +2,11 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const session = require('express-session')
 const massive = require('massive')
+const app = express()
+const socket_io = require('socket.io');
+
 
 require('dotenv').config()
-
-const app = express()
 const port = 4200
 
 //controllers
@@ -41,9 +42,7 @@ app.delete('/api/post/:id', PostCtrl.delete)
 //Comments
 app.get('/api/posts/:postId/comments', CommentCtrl.readComment)
 app.put('/api/posts/:postId/comment/:id')
-// app.get('/api/comments/:id', CommentCtrl.readComment)
 app.post('/api/posts/:postId/comment', CommentCtrl.createComment)
-// app.put('/api/comments/:id', CommentCtrl.updateComment)
 app.delete('/api/comments/:id', CommentCtrl.deleteComment)
 
 //Extras
@@ -53,6 +52,12 @@ app.get('/api/posts', PostCtrl.readByPoints)
 app.get('/api/posts/:postId/favorites')
 
 
-app.listen( port, () => {
+const server = app.listen( port, () => {
     console.log(`Never gonna give ${port} up, Never gonna let ${port} down.`)
+})
+
+const io = socket_io(server)
+
+io.on('connection', function(socket) {
+    
 })
