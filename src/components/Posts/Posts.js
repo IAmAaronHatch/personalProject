@@ -1,5 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import { Link } from 'react-router-dom'
 import Modal from 'react-responsive-modal'
 import Post from './Post'
 
@@ -24,6 +25,17 @@ class Posts extends React.Component {
                 <div>
                     <input placeholder='Search'/>
                 </div>
+
+                <div>
+                    {
+                        this.props.user ?
+                            <div>
+                                <Link to='/form'><button>Create a new post! ✎</button></Link>
+                            </div> :
+                            <p>Please Login to create or view posts!</p>
+                    }
+                </div>
+
                 <div className='posts-container'>
                     {this.props.posts.map(post => {
                         return (

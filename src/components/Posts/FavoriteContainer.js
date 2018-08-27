@@ -1,5 +1,8 @@
 import React, { Component } from 'react'
+// import {  Route } from 'react-router-dom'
 // import axios from 'axios'
+
+// import FavoritePost from './FavoritePost'
 
 class FavoriteContainer extends Component {
     // constructor() {
@@ -14,7 +17,8 @@ class FavoriteContainer extends Component {
     render() {
         return (
             <div>
-                Favorite
+        
+                    favorites
             </div>
         )
     }

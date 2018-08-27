@@ -86,17 +86,20 @@ export function createPost(title, content, picture) {
     }
 }
 
-export function updateTitle (id) {
+export function updateTitle (title, id) {
+    let tempObj = {title}
     return {
         type: UPDATE_TITLE,
-        payload: axios.put(`/api/post/title/${id}`)
+        payload: axios.put(`/api/post/title/${id}`, tempObj)
     }
 }
 
-export function updateContent (id) {
+export function updateContent (content, id) {
+    console.log(content)
+    let tempObj = {content}
     return {
         type: UPDATE_TITLE,
-        payload: axios.put(`/api/post/content/${id}`)
+        payload: axios.put(`/api/post/content/${id}`, tempObj)
     }
 }
 

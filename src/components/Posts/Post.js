@@ -57,7 +57,7 @@ class Post extends React.Component {
                             this.state.updateOpen ?
                                 <div>
                                     <textarea onChange={this.handleTitle} />
-                                    <button onClick={() => this.props.updateTitle(this.state.title)}>Update Title</button>
+                                    <button onClick={() => this.props.updateTitle(this.state.title, this.props.post.id)}>Update Title</button>
                                     <Link to='/posts'><button onClick={() => this.props.deletePost(this.props.post.id)}>Delete Post</button></Link>
                                 </div> :
                                 null
@@ -71,7 +71,7 @@ class Post extends React.Component {
                         this.state.updateOpen ?
                             <div>
                                 <textarea onChange={this.handleContent} />
-                                <button onClick={() => this.props.updateContent(this.state.content)}>Update Content</button>
+                                <button onClick={() => this.props.updateContent(this.state.content, this.props.post.id)}>Update Content</button>
                             </div> :
                             null
                     }
@@ -106,70 +106,3 @@ let mapStateToProps = state => {
 
 
 export default connect(mapStateToProps, { updateTitle, updateContent, deletePost, getComments })(Post)
-
-
-// import React from 'react'
-// import { connect } from 'react-redux'
-// import { Link } from 'react-router-dom'
-
-// import { updatePost } from '../../redux/reducers/posts'
-// import { deletePost } from '../../redux/reducers/posts'
-
-// import '../CSS/SinglePost.css'
-
-// class Post extends React.Component {
-//     // console.log(111111, this.props)
-//     constructor(props) {
-//         super(props)
-
-//         this.state = {
-//             updateOpen: false
-//         }
-//     }
-
-
-//     toggleUpdatePost = (e) => {
-//         this.setState ({
-//             updateOpen: !this.state.updateOpen
-//         })
-//     }
-//     render() {
-//         return (
-//             <div>
-//                 {
-//                     this.props.post && <div>
-//                         <h1>{this.props.post.title}</h1>
-//                         <button onClick={this.toggleUpdatePost}>✎</button>
-//                         {
-//                             this.state.updateOpen ?
-//                             <div>
-//                                 <input />
-//                                 <button>Update Title</button>
-//                             </div> :
-//                             null
-//                         }
-//                         <p>Written By: {this.props.post.author}</p>
-
-//                         <p>{this.props.post.content}</p>
-//                         <button onClick={this.toggleUpdatePost}>✎</button>
-//                         {
-//                             this.state.updateOpen ?
-//                                 <div>
-//                                     <textarea />
-//                                     <button>Update Content</button>
-//                                 </div> :
-//                                 null
-//                         }
-
-//                     </div>
-//                 }
-//                 <Link to='/posts'><button onClick={() => this.props.deletePost(this.props.post.id)}>Delete Post</button></Link>
-//             </div>
-//         )
-//     }
-// }
-
-
-// export default connect(null, { updatePost, deletePost })(Post)
-
-

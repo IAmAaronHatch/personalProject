@@ -22,7 +22,7 @@ class Settings extends Component {
                 </div>
 
                 <div>
-                    <p>Favorite Posts</p>
+                    <Link to='/favorites'><button>Favorites</button></Link>
                     <p>Night Mode</p>
                 </div>
 

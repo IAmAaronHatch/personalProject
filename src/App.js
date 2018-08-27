@@ -16,7 +16,7 @@ import Settings from './components/Settings';
 import BottomNav from './components/BottomNavbar'
 import Poll from './components/Poll';
 import Message from './components/Message'
-import MyPost from './components/Posts/MyPost'
+import Topics from './components/Topics'
 
 
 class App extends Component {
@@ -45,7 +45,7 @@ class App extends Component {
             <Route path='/favorites' component={FavoriteContainer} />
             <Route path='/usersettings' component={Settings} />
             <Route path='/poll' component={Poll} />
-            <Route path='/mypost' component={MyPost} />
+            <Route path='/topics' component={Topics} />
           </Switch>
         </div>
 
