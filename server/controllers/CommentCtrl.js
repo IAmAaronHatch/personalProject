@@ -15,12 +15,15 @@ module.exports = {
 
     createComment: async (req, res) => {
         try {
+            console.log(req.body)
             let db = req.app.get('db')
-            // let {} = req.body 
-            // let user_id = req.session.user ?
-            // res.session.user.id : 1
+            let { comment, commenter_id } = req.body
+            let user_id = req.session.user ?
+            res.session.user.id : 1
             
-
+            let newComment = {comment, commenter_id}
+            let comments = db.createComment(newComment)
+            res.send(comments)
         } catch (error) {
             console.log('had a problem creating comments', error)
             res.status(500).send(error)

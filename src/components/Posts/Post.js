@@ -18,7 +18,8 @@ class Post extends React.Component {
         this.state = {
             updateOpen: false,
             title: '',
-            content: ''
+            content: '',
+            comment: ''
         }
     }
 
@@ -36,6 +37,12 @@ class Post extends React.Component {
             content: e.target.value
         })
     }
+    handleComment = (e) => {
+        this.setState({
+            comment: e.target.value
+        })
+    }
+
 
     toggleUpdatePost = (e) => {
         this.setState({
@@ -79,6 +86,10 @@ class Post extends React.Component {
 
                 <div className='comment-container'>
                     <h3>Comments:</h3>
+                    <div>
+                        <input onChange={this.handleComment} placeholder='Comment' />
+                        <button>Submit</button>
+                    </div>
                     {this.props.comments.map(comment => {
                         return (
                             <div key={comment.id}>
@@ -87,9 +98,6 @@ class Post extends React.Component {
                             </div>
                         )
                     })}
-
-                    <input placeholder='Comment'/>
-                    <input type='submit' hidden/>
                 </div>
 
             </div>

@@ -30,13 +30,18 @@ class CreatePost extends Component {
         })
     }
 
+    handleClick = () => {
+        window.location.reload();
+        this.props.createPost(this.state.title, this.state.content, this.state.picture)
+    }
+
     render() {
         return (
             <div className='newpost-main'>   
                 <textarea cols='40' rows='2' placeholder='Title' onChange={this.handleTitle} />
                 <textarea cols='40' rows='2' placeholder='Picture Link' onChange={this.handlePicture}/>
                 <textarea cols='40' rows='20' placeholder='Content' onChange={this.handleContent}/>
-                <Link to='/posts'><button onClick={() => this.props.createPost(this.state.title, this.state.content, this.state.picture)}>Create Post</button></Link>
+                <Link to='/posts'><button onClick={this.handleClick}>Create Post</button></Link>
 
                 <br/>
                 <Link to='/mypost'><button>Cancel</button></Link>

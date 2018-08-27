@@ -3,11 +3,14 @@ import axios from 'axios'
 
 let initialState = {
     data: [],
-    favorites: []
+    favorites: [],
+    currentlyDisplayed: []
 }
 
 const GET_POSTS = 'GET_POSTS'
 const GET_POSTS_FULFILLED = 'GET_POSTS_FULFILLED'
+
+const UPDATE_DISPLAY = 'UPDATE_DISPLAY'
 
 const GET_POPULAR_POSTS = 'GET_POPULAR_POSTS'
 
@@ -32,7 +35,9 @@ export default function reducer(state = initialState, action) {
                 post.openModal = false
                 return post
             })
-            return { ...state, data: postsWithModalBoolean }
+            return { ...state, data: postsWithModalBoolean, currentlyDisplayed: postsWithModalBoolean }
+        case UPDATE_DISPLAY:
+            return { ...state, currentlyDisplayed: action.payload }
         case GET_POPULAR_POSTS + FULFULLED:
             return { ...state, data: action.payload.data }
         case CREATE_POST_FULFILLED:
@@ -76,6 +81,13 @@ export function getPostsByPoints() {
     return {
         type: GET_POSTS,
         payload: axios.get('/api/popular-posts')
+    }
+}
+
+export function updateCurrentlyDisplayed(filter) {
+    return {
+        type: UPDATE_DISPLAY,
+        payload: filter
     }
 }
 

@@ -6,10 +6,29 @@ import Post from './Post'
 
 import '../CSS/Posts.css'
 
-import { openModal, closeModal } from '../../redux/reducers/posts'
+import { openModal, closeModal, updateCurrentlyDisplayed } from '../../redux/reducers/posts'
 
 
 class Posts extends React.Component {
+    constructor () {
+        super()
+
+        this.state = {
+            searchTerm: ''
+        }
+    }
+
+    onInputChange = (e) => {
+        let { value } = e.target
+
+        let filter = this.props.posts.filter(post => {
+            let sub = post.title.substring(0, value.length)
+            if(sub === value){
+                return post
+            }
+        })
+        this.props.updateCurrentlyDisplayed(filter)
+    }
 
     onOpenModal = (post) => {
         post.openModal = true
@@ -19,11 +38,13 @@ class Posts extends React.Component {
         post.openModal = false
     }
 
+    
+
     render() {
         return (
             <div className='posts-main'>
                 <div>
-                    <input placeholder='Search'/>
+                    <textarea type='text' placeholder='Search' onChange={this.onInputChange}/>
                 </div>
 
                 <div>
@@ -37,7 +58,7 @@ class Posts extends React.Component {
                 </div>
 
                 <div className='posts-container'>
-                    {this.props.posts.map(post => {
+                    {this.props.currentlyDisplayed.map(post => {
                         return (
                             <div key={post.id} className='posts-box'>
                                 <h3 onClick={() => this.props.openModal(post.id)}>{post.title}</h3>
@@ -61,8 +82,9 @@ class Posts extends React.Component {
 let mapStateToProps = state => {
     return {
         posts: state.posts.data,
+        currentlyDisplayed: state.posts.currentlyDisplayed,
         user: state.user.data
     }
 }
 
-export default connect(mapStateToProps, { openModal, closeModal })(Posts)
+export default connect(mapStateToProps, { openModal, closeModal, updateCurrentlyDisplayed })(Posts)

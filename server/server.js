@@ -40,9 +40,9 @@ app.delete('/api/post/:id', PostCtrl.delete)
 
 //Comments
 app.get('/api/posts/:postId/comments', CommentCtrl.readComment)
-app.put('/api/posts/:postId/comments/:id')
+app.put('/api/posts/:postId/comment/:id')
 // app.get('/api/comments/:id', CommentCtrl.readComment)
-app.post('/api/comment/:id', CommentCtrl.createComment)
+app.post('/api/posts/:postId/comment', CommentCtrl.createComment)
 // app.put('/api/comments/:id', CommentCtrl.updateComment)
 app.delete('/api/comments/:id', CommentCtrl.deleteComment)
 
