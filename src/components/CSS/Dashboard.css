@@ -1,4 +1,6 @@
 .dashboard-main{
-    height: 50vh;
+    height: 100vh;
     width: auto;
+    background-color: white;
+    padding-top: 15vh;
 }

@@ -1,4 +1,88 @@
-.header-main {
+
+@media(max-width: 775px)  {
+    .header-main {
+        background-color: whitesmoke;
+        height: 10vh;
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+       
+    }
+    .header-icons-left {
+        background-color: whitesmoke;
+        height: 70%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-bottom: white 1px solid;
+        width: 80%;
+    }
+    .header-icons-right {
+        display: none;
+    }
+    input {
+        display: none;
+    }
+}
+
+@media(min-width: 776px) {
+    .header-main {
+        background-color: whitesmoke;
+        height: 10vh;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-around;
+    }
+    .header-icons-right {
+        display: flex;
+        justify-content: space-around;
+        width: 40%;
+    }
+}
+
+@media(min-width: 1000px) {
+    .header-main {
+        background-color: whitesmoke;
+        height: 15vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-around;
+        position: fixed;
+        width: 100%;
+    }
+    .header-icons-left {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-bottom: 2px solid black;
+        width: 90%
+    }
+    .header-icons-right {
+        display: flex;
+        justify-content: space-around;
+        width: 60%;
+    }
+    h1 {
+        font-size: 35px;
+    }
+    button {
+        border: none;
+        font-size: 16px;
+        background-color: whitesmoke;
+    }
+    input {
+        border: none;
+        display: flex;
+        padding-left: 10px;
+        border-radius: 4px;
+    }
+}
+
+/* .header-main {
     background-color: whitesmoke;
     height: 10vh;
     width: auto;
@@ -35,4 +119,4 @@
         display: flex;
         justify-content: space-around;
     }
-}
+} */

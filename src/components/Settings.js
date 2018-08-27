@@ -10,11 +10,27 @@ class Settings extends Component {
     render() {
         return (
             <div >
-                {
-                    this.props.user ?
-                        <Link to='/'><button onClick={this.props.logout}>Logout</button></Link> :
-                        <Link to='/'><button>Login</button></Link>
-                } 
+                <div>
+                    {
+                        this.props.user ?
+                            // <img src={this.props.user.profile_pic}> 
+                            <p>{this.props.user.name}</p> :
+                            null
+                    }
+                </div>
+
+                <div>
+                    <p>Favorite Posts</p>
+                    <p>Night Mode</p>
+                </div>
+
+                <div>
+                    {
+                        this.props.user ?
+                            <Link to='/'><button onClick={this.props.logout}>Logout</button></Link> :
+                            <Link to='/'><button>Login</button></Link>
+                    }
+                </div>
             </div>
         )
     }
@@ -26,4 +42,4 @@ let mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps, {logout})(Settings)
+export default connect(mapStateToProps, { logout })(Settings)

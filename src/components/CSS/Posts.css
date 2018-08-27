@@ -3,6 +3,7 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    padding-top: 15vh;
 }
 
 .posts-box {
@@ -15,6 +16,7 @@
     border: solid black 1px;
     border-radius: 2px;
     margin: 20px;
+    background-color: rgb(255, 255, 255),
 }
 
 .custom-overlay {
