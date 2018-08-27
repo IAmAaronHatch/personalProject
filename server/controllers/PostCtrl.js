@@ -26,11 +26,11 @@ module.exports = {
     create:  async (req, res) => {
         try {
             let db = req.app.get('db')
-            let { title, content } = req.body 
+            let { title, content, picture } = req.body 
             let user_id = req.session.user ?
             req.session.user.id : 1
 
-            let newPost = { user_id, title, content }
+            let newPost = { user_id, title, content, picture }
             let posts = await db.createPost(newPost) 
             res.send(posts)
         } catch (error) {

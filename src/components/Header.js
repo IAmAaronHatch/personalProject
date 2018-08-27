@@ -10,7 +10,6 @@ function Header(props) {
         <div className='header-main'>
             <div className='header-icons-left'>
                 <h1>Logo</h1>
-                <input placeholder='Search Logo' />
             </div>
 
 

@@ -1,5 +1,4 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import Modal from 'react-responsive-modal'
 import Post from './Post'
@@ -22,13 +21,15 @@ class Posts extends React.Component {
     render() {
         return (
             <div className='posts-main'>
-                
+                <div>
+                    <input placeholder='Search'/>
+                </div>
                 <div className='posts-container'>
                     {this.props.posts.map(post => {
                         return (
                             <div key={post.id} className='posts-box'>
                                 <h3 onClick={() => this.props.openModal(post.id)}>{post.title}</h3>
-                                <img className='post-picture' src={post.picture}/>
+                                <img className='post-picture' src={post.picture} alt='post' />
                                 <hr />
                                 <p>author: {post.author}</p>
                                 <Modal open={post.openModal} onClose={this.props.closeModal} center classNames={{ overlay: 'custom-overlay', modal: 'custom-modal' }}>

@@ -1,7 +1,7 @@
 insert into posts (
-    user_id, title, content
+    user_id, title, content, picture
 ) values (
-    ${user_id}, ${title}, ${content}
+    ${user_id}, ${title}, ${content}, ${picture}
 );
 
 select p.*, u.name as author

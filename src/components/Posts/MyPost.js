@@ -8,7 +8,10 @@ class myPost extends Component {
         return (
             <div className='mypost-main'>
                 My Posts
-
+                <div>
+                    Search
+                    <input className='input' placeholder='Search' />
+                </div>
                 <div>
                     {
                         this.props.user ?

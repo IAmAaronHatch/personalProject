@@ -79,10 +79,10 @@ export function getPostsByPoints() {
     }
 }
 
-export function createPost(title, content) {
+export function createPost(title, content, picture) {
     return {
         type: CREATE_POST,
-        payload: axios.post('/api/post', {title, content})
+        payload: axios.post('/api/post', {title, content, picture})
     }
 }
 

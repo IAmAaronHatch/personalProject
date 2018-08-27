@@ -26,7 +26,7 @@ class Login extends Component {
                     <div className='lower-login-container'>
                         <button className='login-button' onClick={this.login}>Login</button>
                         <hr />
-                        <Link to='/home'><button className='login-button-small'>Login as Guest</button></Link>
+                        <Link to='/posts'><button className='login-button-small'>Login as Guest</button></Link>
                         <button className='night-toggle'><img className='btn-night' src={'https://static.thenounproject.com/png/1643412-200.png'} alt='nightmode'/></button>
                     </div>
                 </div>

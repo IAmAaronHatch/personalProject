@@ -11,6 +11,7 @@ class CreatePost extends Component {
         this.state={
             title: '',
             content: '',
+            picture: ''
         }
     }
     handleTitle = (e) => {
@@ -23,13 +24,19 @@ class CreatePost extends Component {
             content: e.target.value
         })
     }
+    handlePicture = (e) => {
+        this.setState({
+            picture: e.target.value
+        })
+    }
 
     render() {
         return (
             <div className='newpost-main'>   
-                <textarea cols='40' rows='2' placeholder='Title' onChange={this.handleTitle}/>
+                <textarea cols='40' rows='2' placeholder='Title' onChange={this.handleTitle} />
+                <textarea cols='40' rows='2' placeholder='Picture Link' onChange={this.handlePicture}/>
                 <textarea cols='40' rows='20' placeholder='Content' onChange={this.handleContent}/>
-                <Link to='/posts'><button onClick={() => this.props.createPost(this.state.title, this.state.content)}>Create Post</button></Link>
+                <Link to='/posts'><button onClick={() => this.props.createPost(this.state.title, this.state.content, this.state.picture)}>Create Post</button></Link>
 
                 <br/>
                 <Link to='/mypost'><button>Cancel</button></Link>
