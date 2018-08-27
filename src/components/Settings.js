@@ -11,12 +11,14 @@ class Settings extends Component {
         return (
             <div >
                 <div>
-                    {
+                    {/* {
                         this.props.user ?
-                            // <img src={this.props.user.profile_pic}> 
-                            <p>{this.props.user.name}</p> :
+                        <div>
+                            <img src={this.props.user.profile_pic}> 
+                            <p>{this.props.user.name}</p> 
+                        </div> :
                             null
-                    }
+                    } */}
                 </div>
 
                 <div>

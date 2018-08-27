@@ -22,20 +22,13 @@ class Posts extends React.Component {
     render() {
         return (
             <div className='posts-main'>
-                <div>
-                    {
-                        this.props.user ?
-                            <div>
-                                <Link to='/form'><button>Create a new post! ✎</button></Link>
-                            </div> :
-                            null
-                    }
-                </div>
+                
                 <div className='posts-container'>
                     {this.props.posts.map(post => {
                         return (
                             <div key={post.id} className='posts-box'>
                                 <h3 onClick={() => this.props.openModal(post.id)}>{post.title}</h3>
+                                <img className='post-picture' src={post.picture}/>
                                 <hr />
                                 <p>author: {post.author}</p>
                                 <Modal open={post.openModal} onClose={this.props.closeModal} center classNames={{ overlay: 'custom-overlay', modal: 'custom-modal' }}>

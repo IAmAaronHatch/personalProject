@@ -32,7 +32,7 @@ class CreatePost extends Component {
                 <Link to='/posts'><button onClick={() => this.props.createPost(this.state.title, this.state.content)}>Create Post</button></Link>
 
                 <br/>
-                <Link to='/posts'><button>Cancel</button></Link>
+                <Link to='/mypost'><button>Cancel</button></Link>
             </div>
         )
     }
