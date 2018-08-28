@@ -12,6 +12,8 @@ class LoginForm extends Component {
     };
   }
 
+  
+
   setUser = ({ user, isUser }) => {
     console.log(user, isUser);
     if (isUser) {
@@ -37,9 +39,10 @@ class LoginForm extends Component {
     this.setState({ error });
   };
   render() {
+    
     const { nickname, error } = this.state;
     return (
-      <div className="login">
+      <div className="login" >
         <form onSubmit={this.handleSubmit} className="login-form">
           <label htmlFor="nickname">
             <h2>Got a nickname?</h2>
@@ -60,5 +63,7 @@ class LoginForm extends Component {
     );
   }
 }
+
+
 
 export default LoginForm;

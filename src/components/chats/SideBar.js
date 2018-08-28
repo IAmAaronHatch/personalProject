@@ -4,7 +4,7 @@ import React, { Component } from 'react'
 // import FASearch from 'react-icons/lib/fa/search'
 // import MdEject from 'react-icons/lib/md/eject'
 
-import './CSS/messages.css'
+import '../CSS/messages.css'
 
 class SideBar extends Component {
 

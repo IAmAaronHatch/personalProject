@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import './CSS/messages.css'
+import '../CSS/messages.css'
 
 class Messages extends Component {
     constructor() {

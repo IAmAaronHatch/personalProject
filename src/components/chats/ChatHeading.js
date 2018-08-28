@@ -1,6 +1,6 @@
 import React from 'react'
 
-import './CSS/messages.css'
+import '../CSS/messages.css'
 
 function chatHeading ({name, numberOfUsers}) {
 
