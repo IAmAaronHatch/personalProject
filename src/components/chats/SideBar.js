@@ -4,26 +4,28 @@ import React, { Component } from 'react'
 // import FASearch from 'react-icons/lib/fa/search'
 // import MdEject from 'react-icons/lib/md/eject'
 
+import './CSS/messages.css'
+
 class SideBar extends Component {
 
     render() {
         const { chats, activeChat, user, setActiveChat, logout } = this.props
         return (
-            <div>
-                <div>
-                    <div>Chatroom 1 </div>
-                    <div>
+            <div id="side-bar">
+                <div className="heading">
+                    <div className="app-name">Chatroom 1 </div>
+                    <div className="menu">
                         {/* <FAMenu /> */}
                     </div>
                 </div>
 
-                <div>
+                <div className="search">
                     {/* <i><FASearch/></i> */}
                     <input placeholder='Search' type='text'/>
-                    <div></div>
+                    <div className="plus"></div>
                 </div>
 
-                <div ref='users' onClick={(e)=>{ (e.target === this.refs.user) && setActiveChat(null)}}>
+                <div className="users" ref='users' onClick={(e)=>{ (e.target === this.refs.user) && setActiveChat(null)}}>
                     {
                         chats.map((chat) => {
                             if(chat.name){
@@ -39,9 +41,9 @@ class SideBar extends Component {
                                         className={`user ${classNames}`}
                                         onClick={() => { setActiveChat(chat)}}
                                     >
-                                        <div>{user.name[0].toUpperCase()}</div>
-                                        <div>
-                                            <div>{user.name}</div>
+                                        <div className="user-photo">{user.name[0].toUpperCase()}</div>
+                                        <div className="user-info">
+                                            <div lassName="name">{user.name}</div>
                                             {lastMessage && <div>{lastMessage.message}</div>}
                                         </div>
                                     </div>
@@ -52,7 +54,7 @@ class SideBar extends Component {
                     }
                 </div>
                 
-                <div>
+                <div className="current-user">
                     <span>{user.name}</span>
                     <button onClick={()=>{logout()}}>
                         Logout

@@ -1,22 +1,24 @@
 import React, { Component } from 'react'
 import SideBar from './SideBar'
-import { COMMUNITY_CHAT, MESSAGE_SENT, TYPING, MESSAGE_RECEIVED} from '../../Events'
+import { COMMUNITY_CHAT, MESSAGE_SENT, TYPING, MESSAGE_RECEIVED } from '../../Events'
 import ChatHeading from './ChatHeading'
 import Messages from '../messages/Messages'
 import MessageInput from '../messages/MessageInput'
+
+import './CSS/messages.css'
 
 class ChatContainer extends Component {
     constructor(props) {
         super(props)
 
-        this.state={
+        this.state = {
             chats: [],
-            activeChat:null
+            activeChat: null
         }
     }
 
     componentDidMount() {
-        const { socket } = this.props 
+        const { socket } = this.props
         socket.emit(COMMUNITY_CHAT, this.resetChat)
     }
 
@@ -25,11 +27,11 @@ class ChatContainer extends Component {
     }
 
     addChat = (chat, reset) => {
-        const { socket } = this.props 
-        const { chats } = this.state 
+        const { socket } = this.props
+        const { chats } = this.state
 
-        const newChats = reset ? [ chat ] : [...chats, chat]
-        this.setState({chats:newChats})
+        const newChats = reset ? [chat] : [...chats, chat]
+        this.setState({ chats: newChats })
 
         const messageEvent = `${MESSAGE_RECEIVED}-${chat.id}`
         const typingEvent = `${TYPING}-${chat.id}`
@@ -40,14 +42,14 @@ class ChatContainer extends Component {
 
     addMessageToChat = (chatId) => {
         return message => {
-            const { chats } = this.state 
+            const { chats } = this.state
             let newChats = chats.map((chat) => {
-                if(chat.id === chatId)
+                if (chat.id === chatId)
                     chat.messages.push(message)
                 return chat
             })
 
-            this.setState({chats:newChats})
+            this.setState({ chats: newChats })
         }
     }
 
@@ -57,57 +59,57 @@ class ChatContainer extends Component {
 
 
     sendMessage = (chatId, message) => {
-        const { socket } = this.props 
-        socket.emit(MESSAGE_SENT, {chatId, message})
-    } 
+        const { socket } = this.props
+        socket.emit(MESSAGE_SENT, { chatId, message })
+    }
 
     sendTyping = (chatId, isTyping) => {
-        const { socket } = this.props 
-        socket.emit(TYPING, {chatId, isTyping})
+        const { socket } = this.props
+        socket.emit(TYPING, { chatId, isTyping })
     }
 
     setActiveChat = (activeChat) => {
-        this.setState({activeChat})
+        this.setState({ activeChat })
     }
 
     render() {
         const { user, logout } = this.props
         const { chats, activeChat } = this.state
         return (
-            <div>
-                <SideBar 
+            <div className="container">
+                <SideBar
                     logout={logout}
                     chats={chats}
                     user={user}
                     activeChat={activeChat}
                     setActiveChat={this.setActiveChat}
                 />
-                <div>
+                <div className="chat-room-container">
                     {
                         activeChat !== null ? (
-                            <div>
+                            <div className="chat-room">
                                 <ChatHeading name={activeChat.name} />
-                                <Messages 
+                                <Messages
                                     messages={activeChat.messages}
                                     user={user}
                                     typingUsers={activeChat.typingUsers} />
-                                <MessageInput 
+                                <MessageInput
                                     sendMessage={
-                                        (message)=> {
+                                        (message) => {
                                             this.sendMessage(activeChat.id, message)
                                         }
                                     }
                                     sendTyping={
-                                        (isTyping)=> {
+                                        (isTyping) => {
                                             this.sendTyping(activeChat.id, isTyping)
                                         }
                                     }
                                 />
                             </div>
-                        ) : 
-                        <div>
-                            <h3>Chose a chat</h3>
-                        </div>
+                        ) :
+                            <div className="chat-room choose">
+                                <h3>Chose a chat</h3>
+                            </div>
                     }
                 </div>
             </div>

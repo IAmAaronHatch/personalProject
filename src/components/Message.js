@@ -5,7 +5,7 @@ import { USER_CONNECTED, LOGOUT } from '../Events'
 import LoginForm from './LoginForm'
 import ChatContainer from './chats/ChatContainer'
 
-import './CSS/Message.css'
+import './CSS/messages.css'
 
 const socketUrl = 'http://localhost:4200/'
 class Message extends Component {
@@ -52,7 +52,7 @@ class Message extends Component {
     render() {
         const { socket, user } = this.state
         return (
-            <div className='message-main'>
+            <div className='container'>
                 {
                     !user ?
                     <LoginForm socket={socket} setUser={this.setUser} />

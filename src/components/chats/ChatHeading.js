@@ -1,13 +1,15 @@
 import React from 'react'
 
+import './CSS/messages.css'
+
 function chatHeading ({name, numberOfUsers}) {
 
     return (
-        <div>
-            <div>
-                <div>{name}</div>
-                <div>
-                    <div></div>
+        <div className="chat-header">
+            <div className="user-info">
+                <div className="user-name">{name}</div>
+                <div className="status">
+                    <div className="indicator"></div>
                     <span>{numberOfUsers ? numberOfUsers : null}</span>
                 </div>
             </div>
