@@ -6,7 +6,7 @@ import { updateTitle } from '../../redux/reducers/posts'
 import { updateContent } from '../../redux/reducers/posts'
 import { deletePost } from '../../redux/reducers/posts'
 
-import { getComments } from '../../redux/reducers/comments'
+import { getComments, createComment } from '../../redux/reducers/comments'
 
 import '../CSS/SinglePost.css'
 
@@ -86,10 +86,16 @@ class Post extends React.Component {
 
                 <div className='comment-container'>
                     <h3>Comments:</h3>
-                    <div>
-                        <input onChange={this.handleComment} placeholder='Comment' />
-                        <button>Submit</button>
-                    </div>
+                    
+                        {
+                            this.props.user ?
+                            <div>
+                                <textarea onChange={this.handleComment} placeholder='Comment' />
+                                <button onClick={() => this.props.createComment(this.state.comment)}>Submit</button>
+                            </div> :
+                            null
+                        }
+                    
                     {this.props.comments.map(comment => {
                         return (
                             <div key={comment.id}>
@@ -113,4 +119,4 @@ let mapStateToProps = state => {
 }
 
 
-export default connect(mapStateToProps, { updateTitle, updateContent, deletePost, getComments })(Post)
+export default connect(mapStateToProps, { updateTitle, updateContent, deletePost, getComments, createComment })(Post)

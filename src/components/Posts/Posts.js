@@ -26,6 +26,7 @@ class Posts extends React.Component {
             if(sub === value){
                 return post
             }
+            
         })
         this.props.updateCurrentlyDisplayed(filter)
     }

@@ -17,19 +17,21 @@ module.exports = {
         try {
             console.log(req.body)
             let db = req.app.get('db')
-            let { comment, commenter_id } = req.body
-            let user_id = req.session.user ?
-            res.session.user.id : 1
+            let { comment } = req.body
+            let postId = req.params.postId
+            let commenter_id = req.session.user ?
+                req.session.user.id : 1
+            console.log(1111111, req.params)
             
-            let newComment = {comment, commenter_id}
-            let comments = db.createComment(newComment)
+
+            let comments = await db.createComment({ comment, commenter_id, postId })
             res.send(comments)
         } catch (error) {
             console.log('had a problem creating comments', error)
             res.status(500).send(error)
         }
-    }, 
-    
+    },
+
     updateComment: async (req, res) => {
         try {
             let db = req.app.get('db')
@@ -38,8 +40,8 @@ module.exports = {
             console.log('had a problem updating comments', error)
             res.status(500).send(error)
         }
-    }, 
-    
+    },
+
     deleteComment: async (req, res) => {
         try {
             let db = req.app.get('db')
