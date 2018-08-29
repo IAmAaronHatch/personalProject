@@ -26,6 +26,8 @@ const FULFULLED = '_FULFILLED'
 const OPEN_MODAL = 'OPEN_MODAL'
 const CLOSE_MODAL = 'CLOSE_MODAL'
 
+const FAVORITE = 'FAVORITE'
+
 const GET_FAVORITES = 'GET_FAVORITES'
 
 export default function reducer(state = initialState, action) {

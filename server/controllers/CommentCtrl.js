@@ -15,15 +15,12 @@ module.exports = {
 
     createComment: async (req, res) => {
         try {
-            console.log(req.body)
             let db = req.app.get('db')
             let { comment } = req.body
             let postId = req.params.postId
             let commenter_id = req.session.user ?
                 req.session.user.id : 1
-            console.log(1111111, req.params)
             
-
             let comments = await db.createComment({ comment, commenter_id, postId })
             res.send(comments)
         } catch (error) {

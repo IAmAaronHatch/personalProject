@@ -26,19 +26,28 @@ create table comments (
     comment varchar
 );
 
-select * from posts;
+select * from comments;
 
-create table genre (
+create table favorites (
     id serial primary key,
-    name varchar
+    user_id integer references users,
+    post_id integer references posts
 );
 
-select * from genre;
+select * from favorites;
 
-create table sub_genre (
-    id serial primary key,
-    sub_genre_name varchar,
-    genre_id int references genre
-);
+-- create table genre (
+--     id serial primary key,
+--     name varchar
+-- );
 
-select * from sub_genre;
+-- select * from genre;
+
+-- create table sub_genre (
+--     id serial primary key,
+--     sub_genre_name varchar,
+--     genre_id int references genre
+-- );
+
+-- select * from sub_genre;
+

@@ -4,4 +4,8 @@ insert into comments (
     ${postId}, ${commenter_id}, ${comment}
 );
 
-select * from comments;
+select c.*, u.id as user_id, u.name as commenter, u.profile_pic from comments c
+join users u
+on u.id = c.commenter_id
+where c.posts_id = ${postId}
+order by c.id desc;

@@ -28,9 +28,9 @@ export function getComments(postId) {
 }
 
 export function createComment (postId, comment, commenter_id) {
-    let tempObj = {comment}
+    let tempObj = {comment, commenter_id}
     return {
         type: CREATE_COMMENT,
-        payload: axios.post(`/api/posts/${postId}/comment`, tempObj, {commenter_id})
+        payload: axios.post(`/api/posts/${postId}/comment`, tempObj)
     }
 }

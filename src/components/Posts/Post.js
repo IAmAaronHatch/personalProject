@@ -11,7 +11,6 @@ import { getComments, createComment } from '../../redux/reducers/comments'
 import '../CSS/SinglePost.css'
 
 class Post extends React.Component {
-    // console.log(111111, this.props)
     constructor(props) {
         super(props)
 
@@ -54,6 +53,11 @@ class Post extends React.Component {
             updateOpen: !this.state.updateOpen
         })
     }
+
+    handleNewComment = () => {
+        this.props.createComment(this.props.post.id, this.state.comment, this.props.user.id)
+        this.setState({comment:''})
+    }
     render() {
         return (
             <div className='post-main'>
@@ -79,7 +83,7 @@ class Post extends React.Component {
 
                 <div className='content-container'>
                     <div className='picture-container'>
-                        <img className='singlePost-picture' src={this.props.post.picture} />
+                        <img className='singlePost-picture' src={this.props.post.picture} alt='' />
                     </div>
                     <p className='content'>{this.props.post.content}</p>
                     {
@@ -99,7 +103,7 @@ class Post extends React.Component {
                         this.props.user ?
                             <div>
                                 <textarea onChange={this.handleComment} placeholder='Comment' />
-                                <button onClick={() => this.props.createComment(this.state.comment)}>Submit</button>
+                                <button onClick={this.handleNewComment}>Submit</button>
                             </div> :
                             null
                     }

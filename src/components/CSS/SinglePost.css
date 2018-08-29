@@ -29,7 +29,12 @@
 .comment-container {
     padding: 5px;
 }
-
+@media(max-width: 775px) {
+    .singlePost-picture {
+        height: 200px;
+        width: 200px;
+    }
+}
 @media(min-width: 1000px) {
     .singlePost-picture {
         height: 500px;
