@@ -82,7 +82,7 @@ textarea {
      align-items: center;
      justify-content: center;
      flex-direction: column;
-     padding-top: 10vh;
+     padding-top: 15vh;
      margin: 10px;
     }
 
@@ -97,5 +97,8 @@ textarea {
         margin: 10px;
         border: solid black 1px;
         resize: none;
+    }
+    .newpost-login {
+        padding-top: 15vh;
     }
 }

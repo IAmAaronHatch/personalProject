@@ -16,7 +16,7 @@ function Header(props) {
             <div className='header-icons-right'>
                 <Link to='/form'><button>Create Post</button></Link>
                 <Link to='/poll'><button>Polls</button></Link>
-                <Link to='/home'><button>Home</button></Link>
+                <Link to='/posts'><button>Home</button></Link>
                 <Link to='/message'><button>Message</button></Link>
                 {
                     props.user ?

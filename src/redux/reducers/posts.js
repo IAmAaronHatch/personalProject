@@ -6,29 +6,30 @@ let initialState = {
     favorites: [],
     currentlyDisplayed: []
 }
+const FULFULLED = '_FULFILLED'
 
+
+//posts
 const GET_POSTS = 'GET_POSTS'
 const GET_POSTS_FULFILLED = 'GET_POSTS_FULFILLED'
-
-const UPDATE_DISPLAY = 'UPDATE_DISPLAY'
-
 const GET_POPULAR_POSTS = 'GET_POPULAR_POSTS'
-
 const CREATE_POST = 'CREATE_POST'
 const CREATE_POST_FULFILLED = 'CREATE_POST_FULFILLED'
-
+const DELETE_POST = 'DELETE_POST'
 const UPDATE_TITLE = "UPDATE_TITLE"
 const UPDATE_CONTENT = "UPDATE_CONTENT"
 
-const DELETE_POST = 'DELETE_POST'
-const FULFULLED = '_FULFILLED'
 
+const UPDATE_DISPLAY = 'UPDATE_DISPLAY'
+
+const FAVORITE = 'FAVORITE'
+const GET_FAVORITES = 'GET_FAVORITES'
+
+//modal
 const OPEN_MODAL = 'OPEN_MODAL'
 const CLOSE_MODAL = 'CLOSE_MODAL'
 
-const FAVORITE = 'FAVORITE'
 
-const GET_FAVORITES = 'GET_FAVORITES'
 
 export default function reducer(state = initialState, action) {
     switch (action.type) {
@@ -67,6 +68,8 @@ export default function reducer(state = initialState, action) {
             })
             return { ...state, data: posts }
         case GET_FAVORITES + FULFULLED:
+            return { ...state, favorites: action.payload }
+        case FAVORITE + FULFULLED:
             return { ...state, favorites: action.payload }
         default:
             return state
@@ -137,9 +140,16 @@ export function closeModal () {
     }
 }
 
+export function makeFavorite (postId, user_id, post_id) {
+    return {
+        type: FAVORITE,
+        payload: axios.post(`/api/posts/${postId}/favorite`, user_id, post_id)
+    }
+}
+
 export function getFavorites (postId) {
     return {
         type: GET_FAVORITES,
-        payload: axios.get('/api/posts/:postId/favorites')
+        payload: axios.get(`/api/posts/${postId}/favorites`)
     }
 }

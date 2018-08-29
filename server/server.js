@@ -13,6 +13,7 @@ const port = 4200
 const AuthCtrl = require('./controllers/AuthCtrl')
 const PostCtrl = require('./controllers/PostCtrl')
 const CommentCtrl = require('./controllers/CommentCtrl')
+const FavoriteCtrl = require('./controllers/FavoriteCtrl')
 
 massive(process.env.CONNECTION_SESSION ).then( db => {
     app.set('db', db)
@@ -49,7 +50,8 @@ app.delete('/api/comments/:id', CommentCtrl.deleteComment)
 app.get('/api/posts', PostCtrl.readByPoints)
 
 //Favorites 
-app.get('/api/posts/:postId/favorites')
+app.get('/api/posts/:postId/favorites', FavoriteCtrl.read)
+app.post('/api/posys/:postId/favorite', FavoriteCtrl.create)
 
 
 const server = app.listen( port, () => {

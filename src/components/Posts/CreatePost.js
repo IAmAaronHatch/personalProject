@@ -50,7 +50,7 @@ class CreatePost extends Component {
                             <Link to='/posts'><button>Cancel</button></Link> 
                         </div>
                         :
-                        <div>Please Log in to create post</div>
+                        <div className='newpost-login'>Please Log in to create post</div>
 
             }
             </div>
