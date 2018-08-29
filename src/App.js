@@ -15,7 +15,7 @@ import CreatePost from './components/Posts/CreatePost';
 import Settings from './components/Settings';
 import BottomNav from './components/BottomNavbar'
 import Poll from './components/Poll';
-import Message from './components/Message'
+import Message from './components/Messaging/Message'
 
 
 
