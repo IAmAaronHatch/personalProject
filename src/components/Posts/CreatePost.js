@@ -37,7 +37,7 @@ class CreatePost extends Component {
 
     render() {
         return (
-            <div className='newpost-main'>
+            <div className='newpost-container'>
                 {
                     this.props.user ?
                         <div className='newpost-main'>
@@ -47,7 +47,7 @@ class CreatePost extends Component {
                             <Link to='/posts'><button onClick={this.handleClick}>Create Post</button></Link>
     
                             <br />
-                            <Link to='/mypost'><button>Cancel</button></Link> 
+                            <Link to='/posts'><button>Cancel</button></Link> 
                         </div>
                         :
                         <div>Please Log in to create post</div>

@@ -10,15 +10,15 @@ class Settings extends Component {
     render() {
         return (
             <div >
-                <div>
-                    {/* {
+                <div className='settings-container'>
+                    {
                         this.props.user ?
-                        <div>
-                            <img src={this.props.user.profile_pic}> 
+                        <div className='user-info'>
+                            <img className='profile-pic' src={this.props.user.profile_pic} alt=''/> 
                             <p>{this.props.user.name}</p> 
                         </div> :
                             null
-                    } */}
+                    }
                 </div>
 
                 <div>

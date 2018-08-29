@@ -10,7 +10,7 @@
   overflow: scroll;
 }
 
-@media(max-width: 775px) {
+@media(max-width: 767px) {
   .posts-main {
       display: flex;
       align-items: center;
@@ -82,7 +82,7 @@
       align-items: center;
       justify-content: center;
       flex-direction: column;
-      padding-top: 11vh;
+      padding-top: 16vh;
   }
   .posts-container {
     display: flex;
@@ -94,8 +94,8 @@
       align-items: center;
       justify-content: center;
       flex-direction: column;
-      width: 30%;
-      height: 30vh;
+      width: 400px;
+      height: 20%;
       border: solid black 1px;
       border-radius: 2px;
       margin: 20px;
@@ -106,7 +106,7 @@
     height: 300px;
     width: 300px;
     border: 2px black solid;
-    border-radius: 2px
+    border-radius: 2px;
   }
 
   .custom-overlay {

@@ -1,5 +1,5 @@
 
-@media(max-width: 775px)  {
+@media(max-width: 767px)  {
     .header-main {
         background-color: whitesmoke;
         height: 10vh;
@@ -49,7 +49,7 @@
 @media(min-width: 1000px) {
     .header-main {
         background-color: whitesmoke;
-        height: 10vh;
+        height: 15vh;
         display: flex;
         flex-direction: column;
         align-items: center;
