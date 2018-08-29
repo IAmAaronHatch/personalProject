@@ -10,7 +10,7 @@ class BottomNav extends Component {
     render() {
         return (
             <div className='bottomnav-main'>
-                <Link to='/topics'><button><img className='btn' src={'https://static.thenounproject.com/png/1127476-200.png'} alt='topics'/></button></Link>
+                <Link to='/form'><button><img className='btn' src={'https://static.thenounproject.com/png/1127476-200.png'} alt='newpost'/></button></Link>
 
                 <Link to='/poll'><button><img className='btn' src={'https://static.thenounproject.com/png/103882-200.png'} alt='poll' /></button></Link>
 

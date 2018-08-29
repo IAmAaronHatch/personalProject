@@ -1,6 +1,5 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { Link } from 'react-router-dom'
 import Modal from 'react-responsive-modal'
 import Post from './Post'
 
@@ -48,16 +47,6 @@ class Posts extends React.Component {
                     <textarea type='text' placeholder='Search' onChange={this.onInputChange}/>
                 </div>
 
-                <div>
-                    {
-                        this.props.user ?
-                            <div>
-                                <Link to='/form'><button>Create a new post! ✎</button></Link>
-                            </div> :
-                            <p>Please Login to create or view posts!</p>
-                    }
-                </div>
-
                 <div className='posts-container'>
                     {this.props.currentlyDisplayed.map(post => {
                         return (
@@ -89,3 +78,6 @@ let mapStateToProps = state => {
 }
 
 export default connect(mapStateToProps, { openModal, closeModal, updateCurrentlyDisplayed })(Posts)
+
+
+// create a button on each post that fires an sql method that can push that post to init state in redux and add it on the users table to display for later?

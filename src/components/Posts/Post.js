@@ -43,6 +43,11 @@ class Post extends React.Component {
         })
     }
 
+    handleClick = () => {
+        this.props.deletePost(this.props.post.id)
+        window.location.reload();
+    }
+
 
     toggleUpdatePost = (e) => {
         this.setState({
@@ -62,10 +67,10 @@ class Post extends React.Component {
                         <button onClick={this.toggleUpdatePost}>✎</button>
                         {
                             this.state.updateOpen ?
-                                <div>
-                                    <textarea onChange={this.handleTitle} />
+                                <div className='edit'>
+                                    <textarea cols='40' rows='1' onChange={this.handleTitle} />
                                     <button onClick={() => this.props.updateTitle(this.state.title, this.props.post.id)}>Update Title</button>
-                                    <Link to='/posts'><button onClick={() => this.props.deletePost(this.props.post.id)}>Delete Post</button></Link>
+                                    <Link to='/posts'><button onClick={this.handleClick}>Delete Post</button></Link>
                                 </div> :
                                 null
                         }
@@ -73,11 +78,14 @@ class Post extends React.Component {
                 </div>
 
                 <div className='content-container'>
-                    <p>{this.props.post.content}</p>
+                    <div className='picture-container'>
+                        <img className='singlePost-picture' src={this.props.post.picture} />
+                    </div>
+                    <p className='content'>{this.props.post.content}</p>
                     {
                         this.state.updateOpen ?
-                            <div>
-                                <textarea onChange={this.handleContent} />
+                            <div className='edit'>
+                                <textarea id='updateContent' cols='100' rows='3' onChange={this.handleContent} />
                                 <button onClick={() => this.props.updateContent(this.state.content, this.props.post.id)}>Update Content</button>
                             </div> :
                             null
@@ -86,16 +94,16 @@ class Post extends React.Component {
 
                 <div className='comment-container'>
                     <h3>Comments:</h3>
-                    
-                        {
-                            this.props.user ?
+
+                    {
+                        this.props.user ?
                             <div>
                                 <textarea onChange={this.handleComment} placeholder='Comment' />
                                 <button onClick={() => this.props.createComment(this.state.comment)}>Submit</button>
                             </div> :
                             null
-                        }
-                    
+                    }
+
                     {this.props.comments.map(comment => {
                         return (
                             <div key={comment.id}>
