@@ -5,7 +5,6 @@ import { USER_CONNECTED, LOGOUT } from '../Events'
 import LoginForm from './LoginForm'
 import ChatContainer from './chats/ChatContainer'
 
-import './CSS/messages.css'
 
 const socketUrl = 'http://localhost:4200/'
 class Message extends Component {

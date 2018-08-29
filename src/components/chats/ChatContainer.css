@@ -1,0 +1,6 @@
+@media(min-width: 1000px) {
+    .container {
+        background-color: blue;
+        padding-top: 15vh;
+    }
+}

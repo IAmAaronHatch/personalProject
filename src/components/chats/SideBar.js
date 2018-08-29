@@ -3,8 +3,7 @@ import React, { Component } from 'react'
 // import FAMenu from 'react-icons/lib/fa/list-ul'
 // import FASearch from 'react-icons/lib/fa/search'
 // import MdEject from 'react-icons/lib/md/eject'
-
-import '../CSS/messages.css'
+import './Sidebar.css'
 
 class SideBar extends Component {
 

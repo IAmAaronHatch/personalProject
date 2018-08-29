@@ -5,7 +5,7 @@ import ChatHeading from './ChatHeading'
 import Messages from '../messages/Messages'
 import MessageInput from '../messages/MessageInput'
 
-import '../CSS/messages.css'
+import './ChatContainer.css'
 
 class ChatContainer extends Component {
     constructor(props) {

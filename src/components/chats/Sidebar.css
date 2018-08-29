@@ -1,0 +1,15 @@
+@media(min-width: 1000px) {
+    .heading {
+        background-color: blueviolet;
+    }
+    .search {
+        background-color: brown;
+    }
+
+    .users {
+        background-color: blanchedalmond
+    }
+    .current-user {
+        background-color: yellow
+    }
+}
