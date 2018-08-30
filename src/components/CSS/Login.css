@@ -56,6 +56,7 @@
     color: #FFF;
     border-radius: 5px;
     background-color: #2aabe2;
+    border: none;
     height: 20%;
     width: 40%;
     font-size: 20px;
@@ -72,6 +73,7 @@
     color: #FFF;
     background-color: #2aabe2;
     border-radius: 5px;
+    border: none;
     height: 30px;
     font-size: 12px;
     letter-spacing: 3px;
