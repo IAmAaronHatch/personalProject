@@ -31,8 +31,8 @@ class CreatePost extends Component {
     }
 
     handleClick = () => {
-        window.location.reload();
         this.props.createPost(this.state.title, this.state.content, this.state.picture)
+        window.location.reload();
     }
 
     render() {
