@@ -9,7 +9,7 @@ import { HashRouter } from 'react-router-dom'
 // import io from 'socket.io-client'
 
 import store from './redux/store'
-// const socket = io.connect('http://localhost:4200')
+// const socket = io.connect(process.env.REACT_APP_SOCKET_URL)
 
 ReactDOM.render(
     <Provider store={store}>

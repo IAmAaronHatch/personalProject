@@ -3,6 +3,7 @@ const bodyParser = require('body-parser')
 const session = require('express-session')
 const massive = require('massive')
 const app = express()
+const path = require('path');
 // const socket_io = require('socket.io');
 
 
@@ -27,6 +28,8 @@ app.use(session({
     saveUninitialized: true,
 }))
 app.use(bodyParser.json())
+
+app.use(express.static(`${__dirname}/../build`));
 
 //Authentication
 app.get('/auth/callback', AuthCtrl.auth)
@@ -59,6 +62,11 @@ app.get('/api/messages', MessageCtrl.read)
 app.post('/api/message', MessageCtrl.create)
 app.put('/api/message/:id', MessageCtrl.update)
 app.delete('/api/message/:id', MessageCtrl.delete)
+
+
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, '../build/index.html'));
+});
 
 
 app.listen( port, () => {
