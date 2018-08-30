@@ -1,7 +1,5 @@
-// App.js 
-
 import React, { Component } from 'react';
-import axios from 'axios'
+import { connect } from 'react-redux'
 
 import './Message.css';
 
@@ -9,40 +7,23 @@ import Post from './MessagePost/MessagePost'
 import Header from './MessageHeader/MessageHeader';
 import Compose from './Compose/Compose';
 
-class Message extends Component {
-    constructor(props) {
-        super(props);
+import { getMessages } from '../../redux/reducers/message'
 
-        this.state = {
-            posts: []
-        };
-    }
+class Message extends Component {
+    // constructor(props) {
+    //     super(props);
+
+    //     this.state = {
+    //         posts: []
+    //     };
+    // }
 
     componentDidMount() {
-        
-    }
-
-    updatePost = (id, text) => {
-        axios.put(`https://practiceapi.devmountain.com/api/posts?id=${id}`, { text }).then(results => {
-            this.setState({ posts: results.data });
-        });
-    }
-
-    deletePost = (id) => {
-        axios.delete(`https://practiceapi.devmountain.com/api/posts?id=${id}`).then(results => {
-            this.setState({ posts: results.data });
-        });
-    }
-
-    createPost = (text) => {
-        axios.post('https://practiceapi.devmountain.com/api/posts', { text }).then(results => {
-            this.setState({ posts: results.data });
-        });
+        this.props.getMessages()
     }
 
     render() {
-        const { posts } = this.state;
-
+        console.log(1111, this.props)
         return (
             <div className="App__parent">
                 <Header />
@@ -52,15 +33,11 @@ class Message extends Component {
                     <Compose createPostFn={ this.createPost }/>
 
                     {
-                        posts.map(post => (
-                            <Post key = { post.id } 
-                                text = { post.text }
-                                date = { post.date }
-                                id = { post.id }
-                                updatePostFn = { this.updatePost }
-                                deletePostFn = { this.deletePost }
-                                />
-                        ))
+                        this.props.messages.map(message => {
+                            return (
+                                <Post message={message}/>
+                            )
+                        })
                     }
 
                 </section>
@@ -69,4 +46,10 @@ class Message extends Component {
     }
 }
 
-export default Message;
+let mapStateToProps = state => {
+    return {
+        messages: state.message.messages
+    }
+}
+
+export default connect(mapStateToProps, { getMessages } )(Message);

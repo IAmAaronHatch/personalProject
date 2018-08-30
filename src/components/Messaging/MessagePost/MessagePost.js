@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux'
+
 import ProfileIcon from 'react-icons/lib/md/person-outline';
 import ReplyIcon from 'react-icons/lib/md/chat-bubble-outline';
 import FavoriteIcon from 'react-icons/lib/md/favorite-outline';
@@ -11,7 +13,7 @@ import Edit from './Edit/Edit';
 
 //////////////////////////////////////////////////////// THIS COMPONENT IS BEING RENDERED IN THE *APP* COMPONENT
 
-export default class Post extends Component {
+class Post extends Component {
     constructor(props) {
         super(props);
 
@@ -19,49 +21,43 @@ export default class Post extends Component {
             editing: false,
             showMasterMenu: false
         };
-
-        this.hideEdit = this.hideEdit.bind(this);
-        this.showEdit = this.showEdit.bind(this);
-        this.toggleMasterMenu = this.toggleMasterMenu.bind(this);
-        this.hideMasterMenu = this.hideMasterMenu.bind(this);
     }
 
     // This puts the post into EDIT mode when the EDIT button is clicked from the drop-down
-    showEdit() {
+    showEdit = () => {
         this.setState({ editing: true, showMasterMenu: false });
     }
 
     // This puts the post back into normal viewing mode when the CANCEL button is clicked
     // This method is passed down to the <Edit /> component via props
-    hideEdit() {
+    hideEdit = () => {
         this.setState({ editing: false });
     }
 
     // This toggles the drop-down when the three dots in the top right corner of a post are clicked
-    toggleMasterMenu() {
+    toggleMasterMenu = () => {
         this.setState({ showMasterMenu: !this.state.showMasterMenu });
     }
 
     // This hides the drop-down when the post is clicked anywhere
-    hideMasterMenu() {
+    hideMasterMenu = () => {
         if (this.state.showMasterMenu === true) {
             this.setState({ showMasterMenu: false });
         }
     }
 
     render() {
-        const { editing, showMasterMenu } = this.state;
-        const { text, date } = this.props;
-
         return (
             <section className="Post__parent" onClick={this.hideMasterMenu}>
 
                 <div className="Post__master-controls">
-                    <MasterControlIcon onClick={this.toggleMasterMenu} />
+                    {/* <MasterControlIcon onClick={this.toggleMasterMenu} /> */}
 
-                    <div className="Post__master-menu" style={{ display: showMasterMenu ? 'flex' : 'none' }}>
+                    <div className="Post__master-menu" 
+                    // style={{ display: showMasterMenu ? 'flex' : 'none' }}
+                    >
                         <span onClick={this.showEdit}>Edit</span>
-                        <span onClick={ () => this.props.deletePostFn( this.props.id )}>Delete</span>
+                        <span onClick={console.log('delte') }>Delete</span>
                     </div>
                 </div>
 
@@ -73,10 +69,10 @@ export default class Post extends Component {
                     <span className="Post__name">DevMountain</span>
                     <span className="Post__handle">@DevMountain</span>
 
-                    <span className="Post__date">- {date}</span>
+                    {/* <span className="Post__date">- {date}</span> */}
                 </div>
 
-                <div className="Post__content">
+                {/* <div className="Post__content">
                     {
                         editing
                             ?
@@ -88,7 +84,7 @@ export default class Post extends Component {
                             :
                             <span className="Post__text">{text}</span>
                     }
-                </div>
+                </div> */}
 
                 <div className="Post__user-controls">
                     <ReplyIcon className="Post__control-icon" />
@@ -100,3 +96,11 @@ export default class Post extends Component {
         )
     }
 }
+
+let mapStateToProps = state => {
+    return {
+        user: state.user.data
+    }
+}
+
+export default connect(mapStateToProps)(Post)

@@ -3,7 +3,7 @@ const bodyParser = require('body-parser')
 const session = require('express-session')
 const massive = require('massive')
 const app = express()
-const socket_io = require('socket.io');
+// const socket_io = require('socket.io');
 
 
 require('dotenv').config()
@@ -14,6 +14,7 @@ const AuthCtrl = require('./controllers/AuthCtrl')
 const PostCtrl = require('./controllers/PostCtrl')
 const CommentCtrl = require('./controllers/CommentCtrl')
 const FavoriteCtrl = require('./controllers/FavoriteCtrl')
+const MessageCtrl = require('./controllers/MessageCtrl')
 
 massive(process.env.CONNECTION_SESSION ).then( db => {
     app.set('db', db)
@@ -53,13 +54,18 @@ app.get('/api/posts', PostCtrl.readByPoints)
 app.get('/api/posts/:postId/favorites', FavoriteCtrl.read)
 app.post('/api/posys/:postId/favorite', FavoriteCtrl.create)
 
+//Messaging
+app.get('/api/messages', MessageCtrl.read)
+app.post('/api/message', MessageCtrl.create)
+app.put('/api/message/:id', MessageCtrl.update)
+app.delete('/api/message/:id', MessageCtrl.delete)
 
-const server = app.listen( port, () => {
+
+app.listen( port, () => {
     console.log(`Never gonna give ${port} up, Never gonna let ${port} down.`)
 })
 
-const io = socket_io(server)
 
-io.on('connection', function(socket) {
-    
-})
+// const io = socket_io(server)
+// io.on('connection', function(socket) {
+// })
