@@ -1,27 +1,26 @@
 import React, { Component } from 'react'
-// import {  Route } from 'react-router-dom'
-// import axios from 'axios'
+import { connect } from 'react-redux'
+import { Switch, Route } from 'react-router-dom'
 
-// import FavoritePost from './FavoritePost'
+import { getFavorites } from '../../redux/reducers/posts'
+
+import FavoritePost from './FavoritePost'
 
 class FavoriteContainer extends Component {
-    // constructor() {
-    //     super()
-
-    //     this.state = {
-
-    //     }
-    // }
+    componentDidMount() {
+        this.props.getFavorites()
+    }
 
 
     render() {
         return (
             <div>
-        
-                    favorites
+                <Switch>
+                    <Route exact path='/favorites' component={FavoritePost} />
+                </Switch>
             </div>
         )
     }
 }
 
-export default FavoriteContainer
+export default connect(null, { getFavorites })(FavoriteContainer)

@@ -5,7 +5,10 @@ import Post from './Post'
 
 import '../CSS/Posts.css'
 
-import { openModal, closeModal, updateCurrentlyDisplayed } from '../../redux/reducers/posts'
+import { openModal, closeModal, updateCurrentlyDisplayed, makeFavorite } from '../../redux/reducers/posts'
+import PostWrapper from './PostWrapper';
+
+
 
 
 class Posts extends React.Component {
@@ -41,6 +44,7 @@ class Posts extends React.Component {
 
 
     render() {
+    
         return (
             <div className='post'>
                 <div className='posts-main'>
@@ -49,21 +53,7 @@ class Posts extends React.Component {
                     </div>
 
                     <div className='posts-container'>
-                        {this.props.currentlyDisplayed.map(post => {
-                            return (
-                                <div key={post.id} className='posts-box'>
-                                    <h3 onClick={() => this.props.openModal(post.id)}>{post.title}</h3>
-                                    <img className='post-picture' src={post.picture} alt='post' onClick={() => this.props.openModal(post.id)} />
-                                    <hr />
-                                    <p>Author/ {post.author}</p>
-                                    <Modal open={post.openModal} onClose={this.props.closeModal} center classNames={{ overlay: 'custom-overlay', modal: 'custom-modal' }}>
-                                        <div>
-                                            <Post post={post} close={this.props.closeModal} />
-                                        </div>
-                                    </Modal>
-                                </div>
-                            )
-                        })}
+                        <PostWrapper currentlyDisplayed={this.props.currentlyDisplayed}/>
                     </div>
                 </div>
 
@@ -80,7 +70,7 @@ let mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps, { openModal, closeModal, updateCurrentlyDisplayed })(Posts)
+export default connect(mapStateToProps, { openModal, closeModal, makeFavorite, updateCurrentlyDisplayed })(Posts)
 
 
 // create a button on each post that fires an sql method that can push that post to init state in redux and add it on the users table to display for later?

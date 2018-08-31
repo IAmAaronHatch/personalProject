@@ -68,7 +68,7 @@ export default function reducer(state = initialState, action) {
             })
             return { ...state, data: posts }
         case GET_FAVORITES + FULFULLED:
-            return { ...state, favorites: action.payload }
+            return { ...state, favorites: action.payload.data }
         case FAVORITE + FULFULLED:
             return { ...state, favorites: action.payload }
         default:
@@ -140,16 +140,16 @@ export function closeModal () {
     }
 }
 
-export function makeFavorite (postId, user_id, post_id) {
+export function makeFavorite (postId, user_id) {
     return {
         type: FAVORITE,
-        payload: axios.post(`/api/posts/${postId}/favorite`, user_id, post_id)
+        payload: axios.post(`/api/posts/${postId}/favorite`, {user_id})
     }
 }
 
-export function getFavorites (postId) {
+export function getFavorites () {
     return {
         type: GET_FAVORITES,
-        payload: axios.get(`/api/posts/${postId}/favorites`)
+        payload: axios.get(`/api/posts/favorites`)
     }
 }

@@ -1,12 +1,11 @@
 
 module.exports = {
     read: async (req, res) => {
-        console.log('id', req.session)
         try {
             let db = req.app.get('db')
 
             // TODO: this line needs to be fixed for production to only look at user on session
-            let user_id  = req.session.user ? req.session.user.id : 1
+            let user_id  = req.session.user.id
 
             let favorite = await db.getFavorites(user_id)
             res.send(favorite)
