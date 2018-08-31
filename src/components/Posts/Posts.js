@@ -9,7 +9,7 @@ import { openModal, closeModal, updateCurrentlyDisplayed } from '../../redux/red
 
 
 class Posts extends React.Component {
-    constructor () {
+    constructor() {
         super()
 
         this.state = {
@@ -22,10 +22,10 @@ class Posts extends React.Component {
 
         let filter = this.props.posts.filter(post => {
             let sub = post.title.substring(0, value.length)
-            if(sub === value){
+            if (sub === value) {
                 return post
             }
-            
+
         })
         this.props.updateCurrentlyDisplayed(filter)
     }
@@ -38,32 +38,35 @@ class Posts extends React.Component {
         post.openModal = false
     }
 
-    
+
 
     render() {
         return (
-            <div className='posts-main'>
-                <div>
-                    <textarea type='text' placeholder='Search' onChange={this.onInputChange}/>
+            <div className='post'>
+                <div className='posts-main'>
+                    <div>
+                        <input type='text' className='search' placeholder='Search' onChange={this.onInputChange} />
+                    </div>
+
+                    <div className='posts-container'>
+                        {this.props.currentlyDisplayed.map(post => {
+                            return (
+                                <div key={post.id} className='posts-box'>
+                                    <h3 onClick={() => this.props.openModal(post.id)}>{post.title}</h3>
+                                    <img className='post-picture' src={post.picture} alt='post' onClick={() => this.props.openModal(post.id)} />
+                                    <hr />
+                                    <p>Author/ {post.author}</p>
+                                    <Modal open={post.openModal} onClose={this.props.closeModal} center classNames={{ overlay: 'custom-overlay', modal: 'custom-modal' }}>
+                                        <div>
+                                            <Post post={post} close={this.props.closeModal} />
+                                        </div>
+                                    </Modal>
+                                </div>
+                            )
+                        })}
+                    </div>
                 </div>
 
-                <div className='posts-container'>
-                    {this.props.currentlyDisplayed.map(post => {
-                        return (
-                            <div key={post.id} className='posts-box'>
-                                <h3 onClick={() => this.props.openModal(post.id)}>{post.title}</h3>
-                                <img className='post-picture' src={post.picture} alt='post' />
-                                <hr />
-                                <p>author: {post.author}</p>
-                                <Modal open={post.openModal} onClose={this.props.closeModal} center classNames={{ overlay: 'custom-overlay', modal: 'custom-modal' }}>
-                                    <div>
-                                        <Post post={post} close={this.props.closeModal} />
-                                    </div>
-                                </Modal>
-                            </div>
-                        )
-                    })}
-                </div>
             </div>
         )
     }

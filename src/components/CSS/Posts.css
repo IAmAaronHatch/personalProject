@@ -10,13 +10,15 @@
   overflow: scroll;
 }
 
+
 @media(max-width: 767px) {
   .posts-main {
       display: flex;
       align-items: center;
       justify-content: center;
       flex-direction: column;
-      padding-top: 11vh;
+      padding-top: 3vh;
+      background-color: whitesmoke;
   }
   
   .posts-box {
@@ -25,44 +27,61 @@
       justify-content: center;
       flex-direction: column;
       width: 350px;
-      height: 35vh;
-      border: solid black 1px;
+      height: 40vh;
+      border: 1px solid #2aabe2;
       border-radius: 2px;
       margin: 20px;
-      background-color: rgb(255, 255, 255);
+      background-color: white;
       box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.12), 0 0 2px 0 rgba(0, 0, 0, 0.14);
   }
   
   .post-picture {
     height: 150px;
     width: 150px;
-    border: 2px black solid;
+    border: 1px black solid;
     border-radius: 2px
   }
+  .search{
+    width: 200px;
+    height: 20px;
+    border-radius: 5px;
+  border: 1px solid #2aabe2;
+  }
+  hr{
+    background-color: #2aabe2;
+    width: 250px;
+  }
+  
 }
 
 @media(min-width: 768px) {
+  .post {
+    background-color: whitesmoke;
+    
+  }
   .posts-main {
       display: flex;
       align-items: center;
       justify-content: center;
       flex-direction: column;
+      /* background-color: whitesmoke; */
+      /* height: 100vh; */
   }
   .posts-container {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    align-items: center;
     justify-content: center;
+    align-items: center;
   }
   .posts-box {
       display: flex;
       align-items: center;
       justify-content: center;
       flex-direction: column;
-      width: 60%;
-      height: 35vh;
-      border: solid black 1px;
+      width: 350px;
+      height: 400px;
+      border: 1px solid #2aabe2;
       border-radius: 2px;
       margin: 20px;
       background-color: rgb(255, 255, 255);
@@ -71,8 +90,15 @@
   .post-picture {
     height: 225px;
     width: 225px;
-    border: 2px black solid;
+    border: 1px black solid;
     border-radius: 2px
+  }
+  .search{
+    width: 200px;
+    height: 20px;
+    border-radius: 5px;
+  border: 1px solid #2aabe2;
+    position: relative;
   }
 }
 
@@ -96,7 +122,7 @@
       flex-direction: column;
       width: 400px;
       height: 20%;
-      border: solid black 1px;
+      border: 1px solid #2aabe2;
       border-radius: 2px;
       margin: 20px;
       background-color: rgb(255, 255, 255);
@@ -105,7 +131,7 @@
   .post-picture {
     height: 300px;
     width: 300px;
-    border: 2px black solid;
+    border: 1px black solid;
     border-radius: 2px;
   }
 
@@ -119,5 +145,16 @@
   height: 90%;
   overflow: scroll;
 }
+hr{
+    background-color: #2aabe2;
+    width: 250px;
+  }
+  .search{
+    width: 300px;
+    height: 26px;
+    border-radius: 5px;
+  border: 1px solid #2aabe2;
+    
+  }
 }
 

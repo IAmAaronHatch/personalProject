@@ -1,17 +1,17 @@
 
 @media(max-width: 767px)  {
     .header-main {
-        background-color: whitesmoke;
+        background-color: white;
         height: 10vh;
         width: 100%;
         display: flex;
         flex-direction: row;
         align-items: center;
         justify-content: center;
-       box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.12), 0 0 2px 0 rgba(0, 0, 0, 0.14);
+       box-shadow: 3px black
     }
     .header-icons-left {
-        background-color: whitesmoke;
+        background-color: white;
         height: 70%;
         display: flex;
         align-items: center;
@@ -27,8 +27,8 @@
 
 @media(min-width: 768px) {
     .header-main {
-        background-color: whitesmoke;
-        height: 10vh;
+        background-color: white;
+        height: 8vh;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -47,7 +47,7 @@
 
 @media(min-width: 1000px) {
     .header-main {
-        background-color: whitesmoke;
+        background-color: white;
         height: 13vh;
         display: flex;
         flex-direction: column;
@@ -76,7 +76,7 @@
     button {
         border: none;
         font-size: 16px;
-        background-color: whitesmoke;
+        background-color: white;
     }
 }
 
