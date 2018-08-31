@@ -31,6 +31,14 @@ app.use(bodyParser.json())
 
 app.use(express.static(`${__dirname}/../build`));
 
+//TODO remove this before production
+app.use((req, res, next) => {
+    if (!req.session.user) {
+        req.session.user = {id: 1}
+    }
+    next()
+})
+
 //Authentication
 app.get('/auth/callback', AuthCtrl.auth)
 app.get('/api/currentUser', AuthCtrl.currentUser)
@@ -54,8 +62,8 @@ app.delete('/api/comments/:id', CommentCtrl.deleteComment)
 app.get('/api/posts', PostCtrl.readByPoints)
 
 //Favorites 
-app.get('/api/posts/:postId/favorites', FavoriteCtrl.read)
-app.post('/api/posys/:postId/favorite', FavoriteCtrl.create)
+app.get('/api/posts/favorites', FavoriteCtrl.read)
+app.post('/api/posts/:postId/favorite', FavoriteCtrl.create)
 
 //Messaging
 app.get('/api/messages', MessageCtrl.read)

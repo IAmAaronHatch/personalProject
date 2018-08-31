@@ -1,4 +1,6 @@
 
+
+
 .custom-overlay {
   background: rgba(37, 36, 36, 0.356);
 }
@@ -15,10 +17,11 @@
   .posts-main {
       display: flex;
       align-items: center;
-      justify-content: center;
+      justify-content: flex-start;
       flex-direction: column;
       padding-top: 3vh;
       background-color: whitesmoke;
+      min-height: 80vh;
   }
   
   .posts-box {
@@ -34,6 +37,15 @@
       background-color: white;
       box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.12), 0 0 2px 0 rgba(0, 0, 0, 0.14);
   }
+
+  .posts-box-top {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding-left: 25px;
+  }
+
   
   .post-picture {
     height: 150px;
@@ -87,6 +99,13 @@
       background-color: rgb(255, 255, 255);
       box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.12), 0 0 2px 0 rgba(0, 0, 0, 0.14);
   }
+  .posts-box-top {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding-left: 25px;
+  }
   .post-picture {
     height: 225px;
     width: 225px;
@@ -127,6 +146,13 @@
       margin: 20px;
       background-color: rgb(255, 255, 255);
       box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.12), 0 0 2px 0 rgba(0, 0, 0, 0.14);
+  }
+  .posts-box-top {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding-left: 25px;
   }
   .post-picture {
     height: 300px;
