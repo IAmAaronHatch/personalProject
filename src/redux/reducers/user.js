@@ -1,7 +1,8 @@
 import axios from 'axios'
 
 let initialState = {
-    data: null
+    data: null,
+    
 }
 
 const GET_USER = 'GET_USER'

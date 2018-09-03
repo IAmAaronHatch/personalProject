@@ -2,6 +2,8 @@ import React from 'react'
 import { connect } from 'react-redux'
 import Modal from 'react-responsive-modal'
 import Post from './Post'
+import { ToastContainer, ToastStore } from 'react-toasts'
+import MdBookmark from 'react-icons/lib/md/bookmark-outline'
 
 import '../CSS/Posts.css'
 
@@ -20,10 +22,10 @@ class PostWrapper extends React.Component {
     }
 
 
-
     render() {
         return (
             <div className='posts-container'>
+            <ToastContainer store={ToastStore} position={ToastContainer.POSITION.TOP_CENTER} lightBackground/>
                 {this.props.currentlyDisplayed.map(post => {
                     return (
                         <div key={post.id} className='posts-box'>
@@ -31,7 +33,7 @@ class PostWrapper extends React.Component {
                                 <h3 onClick={() => this.props.openModal(post.id)}>{post.title}</h3>
                                 {
                                     this.props.user ?
-                                        <button onClick={() => this.props.makeFavorite(post.id, this.props.user.id)} className='star'>★</button>
+                                        <MdBookmark onClick={() => { this.props.makeFavorite(post.id, this.props.user.id); ToastStore.success('Added To Favorites!');}} className='star'/>
                                         :
                                         null
                                 }

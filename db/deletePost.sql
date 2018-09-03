@@ -1,6 +1,7 @@
 delete from comments 
 where posts_id = $1;
-
+delete from favorites
+where post_id = $1;
 delete from posts
 where id = $1;
 

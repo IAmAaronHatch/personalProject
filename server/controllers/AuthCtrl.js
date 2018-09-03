@@ -29,6 +29,9 @@ module.exports = {
                 res.redirect('/#/posts')
             } else {
                 console.log(userInfo)
+                if (userInfo.picture.includes('https://s.gravatar.com/avatar')) {
+                    userInfo.picture = 'https://static.thenounproject.com/png/138354-200.png'
+                }
                 let users = await db.createUser(userInfo)
                 req.session.user = users[0]
                 res.redirect('/#/posts')

@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 
+
 import ProfileIcon from 'react-icons/lib/md/person-outline';
 import ReplyIcon from 'react-icons/lib/md/chat-bubble-outline';
-import FavoriteIcon from 'react-icons/lib/md/favorite-outline';
-import MessageIcon from 'react-icons/lib/md/mail-outline';
 
 
 import './MessagePost.css';
@@ -46,7 +45,6 @@ class MessagePost extends Component {
     // }
 
     render() {
-        // console.log(this.props.messages);
         return (
             <section className="Post__parent" onClick={this.hideMasterMenu}>
 
@@ -59,13 +57,13 @@ class MessagePost extends Component {
                     <div className="Post__profile-picture">
                         {
                             this.props.user ?
-                                <img className='icon' src={this.props.user.profile_pic} alt='' /> :
+                                <img className='icon' src={this.props.message.picture} alt='' /> :
                                 <ProfileIcon />
                         }
                     </div>
 
-                    <span className="Post__name">{this.props.user.name}</span>
-                    <span className="Post__handle">@{this.props.user.name}</span>
+                    <span className="Post__name">{this.props.message.messager}</span>
+                    <span className="Post__handle">@{this.props.message.messager}</span>
 
                     {/* <span className="Post__date">- {date}</span> */}
                 </div>
@@ -78,8 +76,6 @@ class MessagePost extends Component {
 
                 <div className="Post__user-controls">
                     <ReplyIcon className="Post__control-icon" onClick={()=>this.props.setInputVal(this.props.user.name)}/>
-                    {/* <FavoriteIcon className="Post__control-icon" /> */}
-                    <MessageIcon className="Post__control-icon" />
                 </div>
 
             </section>

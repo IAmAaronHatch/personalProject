@@ -45,7 +45,7 @@ constructor(){
                     {
                         this.props.messages.map(message => {
                             return (
-                                <MessagePost key={message.id} message={message} setInputVal={this.setInputVal}/>
+                                <MessagePost key={message.id} picture={message.picture} messager={message.messager} message={message} setInputVal={this.setInputVal}/>
                             )
                         })
                     }

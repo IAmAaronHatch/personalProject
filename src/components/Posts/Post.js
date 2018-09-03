@@ -8,6 +8,11 @@ import { deletePost } from '../../redux/reducers/posts'
 
 import { getComments, createComment } from '../../redux/reducers/comments'
 
+import ChatBubble from 'react-icons/lib/md/chat-bubble-outline'
+import Delete from 'react-icons/lib/md/delete'
+import Edit from 'react-icons/lib/md/edit'
+
+import DateComponent from '../DateComponent'
 import '../CSS/SinglePost.css'
 
 class Post extends React.Component {
@@ -18,7 +23,8 @@ class Post extends React.Component {
             updateOpen: false,
             title: '',
             content: '',
-            comment: ''
+            comment: '',
+            commentOpen: false
         }
     }
 
@@ -47,17 +53,29 @@ class Post extends React.Component {
         window.location.reload();
     }
 
-
     toggleUpdatePost = (e) => {
         this.setState({
             updateOpen: !this.state.updateOpen
         })
+    }
+    toggleComment = (e) => {
+        this.setState({commentOpen: !this.state.commentOpen})
     }
 
     handleNewComment = () => {
         this.props.createComment(this.props.post.id, this.state.comment, this.props.user.id)
         this.setState({comment:''})
     }
+
+    handleUpdateContent = () => {
+        this.props.updateContent(this.state.content, this.props.post.id)
+        window.location.reload();
+    }
+    handleUpdateTitle = () => {
+        this.props.updateTitle(this.state.title, this.props.post.id)
+        window.location.reload();
+    }
+
     render() {
         return (
             <div className='post-main'>
@@ -68,15 +86,20 @@ class Post extends React.Component {
                     </div>
                     <div className='title-info'>
                         <h1>{this.props.post.title}</h1>
-                        <button onClick={this.toggleUpdatePost}>✎</button>
                         {
-                            this.state.updateOpen ?
-                                <div className='edit'>
-                                    <textarea cols='40' rows='1' onChange={this.handleTitle} />
-                                    <button onClick={() => this.props.updateTitle(this.state.title, this.props.post.id)}>Update Title</button>
-                                    <Link to='/posts'><button onClick={this.handleClick}>Delete Post</button></Link>
-                                </div> :
-                                null
+                            this.props.user.name === this.props.post.author ?
+                            <div>
+                                    <Edit onClick={this.toggleUpdatePost} />
+                                    {
+                                        this.state.updateOpen ?
+                                            <div className='edit'>
+                                                <textarea cols='40' rows='1' onChange={this.handleTitle} />
+                                                <button onClick={this.handleUpdateTitle}>Update Title</button>
+                                                <Link to='/posts'><Delete onClick={this.handleClick} /></Link>
+                                            </div> :
+                                            null
+                                    }
+                            </div> : null
                         }
                     </div>
                 </div>
@@ -90,7 +113,7 @@ class Post extends React.Component {
                         this.state.updateOpen ?
                             <div className='edit'>
                                 <textarea id='updateContent' cols='100' rows='3' onChange={this.handleContent} />
-                                <button onClick={() => this.props.updateContent(this.state.content, this.props.post.id)}>Update Content</button>
+                                <button onClick={this.handleUpdateContent}>Update Content</button>
                             </div> :
                             null
                     }
@@ -102,8 +125,15 @@ class Post extends React.Component {
                     {
                         this.props.user ?
                             <div>
-                                <textarea onChange={this.handleComment} placeholder='Comment' />
-                                <button onClick={this.handleNewComment}>Submit</button>
+                                <ChatBubble onClick={this.toggleComment}/>
+                                {
+                                    this.state.commentOpen ? 
+                                    <div>
+                                        <textarea onChange={this.handleComment} placeholder='Comment' />
+                                        <button onClick={this.handleNewComment}>Submit</button>
+                                    </div>
+                                    : null
+                                }
                             </div> :
                             null
                     }
