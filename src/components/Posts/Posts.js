@@ -1,7 +1,5 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import Modal from 'react-responsive-modal'
-import Post from './Post'
 
 import '../CSS/Posts.css'
 

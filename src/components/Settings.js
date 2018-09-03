@@ -4,12 +4,18 @@ import { connect } from 'react-redux'
 
 import { logout } from '../redux/reducers/user'
 
+import './CSS/Settings.css'
+
 class Settings extends Component {
 
 
     render() {
         return (
-            <div >
+            <div className='settings-main'>
+            <div className='user-settings'>
+
+                    <h2>User Settings</h2>
+            </div>
                 <div className='settings-container'>
                     {
                         this.props.user ?
@@ -21,12 +27,8 @@ class Settings extends Component {
                     }
                 </div>
 
-                <div>
+                <div className='buttons'>
                     <Link to='/favorites'><button>Favorites</button></Link>
-                    <p>Night Mode</p>
-                </div>
-
-                <div>
                     {
                         this.props.user ?
                             <Link to='/'><button onClick={this.props.logout}>Logout</button></Link> :

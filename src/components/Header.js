@@ -3,13 +3,15 @@ import './CSS/Header.css'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 
+import logo from '../Threddit@2x.png'
+
 import { logout } from '../redux/reducers/user'
 
 function Header(props) {
     return (
         <div className='header-main'>
             <div className='header-icons-left'>
-                <h1>Logo</h1>
+                <img className='logo' src={logo} alt='logo'/>
             </div>
 
 

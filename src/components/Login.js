@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import './CSS/Login.css'
 import { Link } from 'react-router-dom'
+import logo from '../Threddit@2x.png'
 
 class Login extends Component {
 
@@ -21,7 +22,7 @@ class Login extends Component {
                 <div className='login-container'>
                     <div className='upper-login-container'>
                         <div className='login-icon'>logo picture</div>
-                        <div className='logo'>Logo</div>
+                        <img className='logo' src={logo} alt='logo'/>
                     </div>
                     <div className='lower-login-container'>
                         <button className='login-button' onClick={this.login}>Login</button>
