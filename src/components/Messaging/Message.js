@@ -9,10 +9,27 @@ import Compose from './Compose/Compose';
 import { getMessages } from '../../redux/reducers/message'
 
 class Message extends Component {
-
+constructor(){
+    super()
+    this.state = {
+        inputVal: ''
+    }
+}
 
     componentDidMount() {
        this.props.getMessages()
+    }
+
+    setInputVal = (value) => {
+        value = '@' + value
+        this.setState({
+            inputVal: value 
+        })
+    }
+    handleChange = (value) => {
+        this.setState ({
+            inputVal: value
+        })
     }
 
     render() {
@@ -22,12 +39,13 @@ class Message extends Component {
 
                 <section className="App__content">
 
-                    <Compose />
+                    <Compose inputVal={this.state.inputVal}
+                    handleChange={this.handleChange}/>
 
                     {
                         this.props.messages.map(message => {
                             return (
-                                <MessagePost key={message.id} message={message}/>
+                                <MessagePost key={message.id} message={message} setInputVal={this.setInputVal}/>
                             )
                         })
                     }
@@ -40,7 +58,8 @@ class Message extends Component {
 
 let mapStateToProps = state => {
     return {
-        messages: state.message.messages
+        messages: state.message.messages,
+
     }
 }
 

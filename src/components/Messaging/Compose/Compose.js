@@ -18,7 +18,7 @@ class Compose extends Component {
         this.setState({ message: e.target.value });
     }
     handleClick = () => {
-        this.props.createMessage(this.state.message)
+        this.props.createMessage(this.props.inputVal)
         window.location.reload();
     }
     
@@ -33,7 +33,8 @@ class Compose extends Component {
 
                     <input className="Compose__input"
                         placeholder="Chat With The Community!"
-                        onChange={this.handleText} />
+                        value={this.props.inputVal}
+                        onChange={(e)=>this.props.handleChange(e.target.value)} />
 
                 </div>
 

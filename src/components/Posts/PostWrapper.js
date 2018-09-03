@@ -9,7 +9,6 @@ import { openModal, closeModal, makeFavorite } from '../../redux/reducers/posts'
 
 
 
-
 class PostWrapper extends React.Component {
 
     onOpenModal = (post) => {

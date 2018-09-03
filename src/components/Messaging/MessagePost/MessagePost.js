@@ -77,8 +77,8 @@ class MessagePost extends Component {
                 </div>
 
                 <div className="Post__user-controls">
-                    <ReplyIcon className="Post__control-icon" />
-                    <FavoriteIcon className="Post__control-icon" />
+                    <ReplyIcon className="Post__control-icon" onClick={()=>this.props.setInputVal(this.props.user.name)}/>
+                    {/* <FavoriteIcon className="Post__control-icon" /> */}
                     <MessageIcon className="Post__control-icon" />
                 </div>
 
