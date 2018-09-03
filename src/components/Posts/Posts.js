@@ -46,7 +46,7 @@ class Posts extends React.Component {
         return (
             <div className='post'>
                 <div className='posts-main'>
-                    <div>
+                    <div style={styles}>
                         <input type='text' className='search' placeholder='Search' onChange={this.onInputChange} />
                     </div>
 
@@ -66,6 +66,9 @@ let mapStateToProps = state => {
         currentlyDisplayed: state.posts.currentlyDisplayed,
         user: state.user.data
     }
+}
+let styles = {
+    position: '',
 }
 
 export default connect(mapStateToProps, { openModal, closeModal, makeFavorite, updateCurrentlyDisplayed })(Posts)

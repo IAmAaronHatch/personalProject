@@ -1,37 +1,28 @@
 import React, { Component } from 'react';
 import ProfileIcon from 'react-icons/lib/md/person-outline';
+import { connect } from 'react-redux'
+import { createMessage } from '../../../redux/reducers/message'
 
 import './Compose.css';
 
 //////////////////////////////////////////////////////// THIS COMPONENT IS BEING RENDERED IN THE *APP* COMPONENT
-
-export default class Compose extends Component {
+class Compose extends Component {
     constructor() {
         super();
-
         this.state = {
-            text: ''
+            message: ''
         };
-
-        this.createPost = this.createPost.bind(this);
     }
 
-    updateText(text) {
-        this.setState({ text });
+    handleText = (e) => {
+        this.setState({ message: e.target.value });
     }
-
-    createPost() {
-        const { text } = this.state;
-        const { createPostFn } = this.props;
-
-        createPostFn(text);
-        this.setState({ text: '' });
+    handleClick = () => {
+        this.props.createMessage(this.state.message)
+        window.location.reload();
     }
-
+    
     render() {
-        // Destructuring
-        const { text } = this.state;
-
         return (
             <section className="Compose__parent">
                 <div className="Compose__top">
@@ -40,18 +31,17 @@ export default class Compose extends Component {
                         <ProfileIcon />
                     </div>
 
-                    {/* This is where you type the message for your new post */}
                     <input className="Compose__input"
-                        placeholder="What's on your mind?"
-                        value={text}
-                        onChange={(e) => this.updateText(e.target.value)} />
+                        placeholder="Chat With The Community!"
+                        onChange={this.handleText} />
 
                 </div>
 
                 <div className="Compose__bottom">
-                    <button onClick={this.createPost}>Compose</button>
+                    <button onClick={this.handleClick}>Compose</button>
                 </div>
             </section>
         )
     }
 }
+export default connect(null, { createMessage })(Compose) 

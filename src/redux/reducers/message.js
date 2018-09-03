@@ -14,13 +14,13 @@ const DELETE_MESSAGE = 'DELETE_MESSAGE'
 export default function reducer (state = initialState, action) {
     switch(action.type){
         case GET_MESSAGES + FULFILLED:
-            return { ...state, posts: action.payload.posts }
+            return { ...state, messages: action.payload.data }
         case CREATE_MESSAGE + FULFILLED:
-            return { ...state, posts: action.payload.posts }
+            return { ...state, messages: action.payload.data }
         case UPDATE_MESSAGE + FULFILLED:
-            return { ...state, posts: action.payload.posts }
+            return { ...state, messages: action.payload.messages }
         case DELETE_MESSAGE + FULFILLED: 
-            return { ...state, posts: action.payload.posts }
+            return { ...state, messages: action.payload.messages }
         default: return state
     }
 }

@@ -5,15 +5,14 @@ import ProfileIcon from 'react-icons/lib/md/person-outline';
 import ReplyIcon from 'react-icons/lib/md/chat-bubble-outline';
 import FavoriteIcon from 'react-icons/lib/md/favorite-outline';
 import MessageIcon from 'react-icons/lib/md/mail-outline';
-import MasterControlIcon from 'react-icons/lib/md/more-vert';
+
 
 import './MessagePost.css';
 
-import Edit from './Edit/Edit';
 
 //////////////////////////////////////////////////////// THIS COMPONENT IS BEING RENDERED IN THE *APP* COMPONENT
 
-class Post extends Component {
+class MessagePost extends Component {
     constructor(props) {
         super(props);
 
@@ -24,67 +23,58 @@ class Post extends Component {
     }
 
     // This puts the post into EDIT mode when the EDIT button is clicked from the drop-down
-    showEdit = () => {
-        this.setState({ editing: true, showMasterMenu: false });
-    }
+    // showEdit = () => {
+    //     this.setState({ editing: true, showMasterMenu: false });
+    // }
 
     // This puts the post back into normal viewing mode when the CANCEL button is clicked
     // This method is passed down to the <Edit /> component via props
-    hideEdit = () => {
-        this.setState({ editing: false });
-    }
+    // hideEdit = () => {
+    //     this.setState({ editing: false });
+    // }
 
     // This toggles the drop-down when the three dots in the top right corner of a post are clicked
-    toggleMasterMenu = () => {
-        this.setState({ showMasterMenu: !this.state.showMasterMenu });
-    }
+    // toggleMasterMenu = () => {
+    //     this.setState({ showMasterMenu: !this.state.showMasterMenu });
+    // }
 
     // This hides the drop-down when the post is clicked anywhere
-    hideMasterMenu = () => {
-        if (this.state.showMasterMenu === true) {
-            this.setState({ showMasterMenu: false });
-        }
-    }
+    // hideMasterMenu = () => {
+    //     if (this.state.showMasterMenu === true) {
+    //         this.setState({ showMasterMenu: false });
+    //     }
+    // }
 
     render() {
+        // console.log(this.props.messages);
         return (
             <section className="Post__parent" onClick={this.hideMasterMenu}>
 
                 <div className="Post__master-controls">
                     {/* <MasterControlIcon onClick={this.toggleMasterMenu} /> */}
 
-                    <div className="Post__master-menu" 
-                    // style={{ display: showMasterMenu ? 'flex' : 'none' }}
-                    >
-                        <span onClick={this.showEdit}>Edit</span>
-                        <span onClick={console.log('delte') }>Delete</span>
-                    </div>
                 </div>
 
                 <div className="Post__meta-data">
                     <div className="Post__profile-picture">
-                        <ProfileIcon />
+                        {
+                            this.props.user ?
+                                <img className='icon' src={this.props.user.profile_pic} alt='' /> :
+                                <ProfileIcon />
+                        }
                     </div>
 
-                    <span className="Post__name">DevMountain</span>
-                    <span className="Post__handle">@DevMountain</span>
+                    <span className="Post__name">{this.props.user.name}</span>
+                    <span className="Post__handle">@{this.props.user.name}</span>
 
                     {/* <span className="Post__date">- {date}</span> */}
                 </div>
 
-                {/* <div className="Post__content">
-                    {
-                        editing
-                            ?
-                            <Edit text = { text }
-                                id = { this.props.id }
-                                hideEdit={this.hideEdit} 
-                                updatePostFn = { this.props.updatePostFn }
-                                />
-                            :
-                            <span className="Post__text">{text}</span>
-                    }
-                </div> */}
+                <div className="Post__content">
+                        
+                    {this.props.message.message}
+
+                </div>
 
                 <div className="Post__user-controls">
                     <ReplyIcon className="Post__control-icon" />
@@ -99,8 +89,9 @@ class Post extends Component {
 
 let mapStateToProps = state => {
     return {
-        user: state.user.data
+        user: state.user.data,
+        messages: state.message.messages
     }
 }
 
-export default connect(mapStateToProps)(Post)
+export default connect(mapStateToProps)(MessagePost)

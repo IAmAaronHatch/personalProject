@@ -46,6 +46,13 @@
   align-items: center;
 }
 
+.icon {
+  height: 25px;
+  width: 25px;
+  border-radius: 50%;
+  
+}
+
 .Post__profile-picture {
   border: 1px solid #2aabe2;
   display: flex;
