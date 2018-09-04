@@ -48,11 +48,6 @@ class MessagePost extends Component {
         return (
             <section className="Post__parent" onClick={this.hideMasterMenu}>
 
-                <div className="Post__master-controls">
-                    {/* <MasterControlIcon onClick={this.toggleMasterMenu} /> */}
-
-                </div>
-
                 <div className="Post__meta-data">
                     <div className="Post__profile-picture">
                         {

@@ -12,7 +12,6 @@ import ChatBubble from 'react-icons/lib/md/chat-bubble-outline'
 import Delete from 'react-icons/lib/md/delete'
 import Edit from 'react-icons/lib/md/edit'
 
-import DateComponent from '../DateComponent'
 import '../CSS/SinglePost.css'
 
 class Post extends React.Component {
@@ -88,8 +87,8 @@ class Post extends React.Component {
                         <h1>{this.props.post.title}</h1>
                         {
                             this.props.user.name === this.props.post.author ?
-                            <div>
-                                    <Edit onClick={this.toggleUpdatePost} />
+                            <div className='edit-container'>
+                                    <Edit className='edit-btn' onClick={this.toggleUpdatePost} />
                                     {
                                         this.state.updateOpen ?
                                             <div className='edit'>
@@ -120,7 +119,7 @@ class Post extends React.Component {
                 </div>
 
                 <div className='comment-container'>
-                    <h3>Comments:</h3>
+                    <h3>Stitches:</h3>
 
                     {
                         this.props.user ?
@@ -142,7 +141,7 @@ class Post extends React.Component {
                         return (
                             <div key={comment.id}>
                                 <h4>"{comment.comment}"</h4>
-                                <p>Commented by: {comment.commenter}</p>
+                                <p>Stitched by: {comment.commenter}</p>
                             </div>
                         )
                     })}

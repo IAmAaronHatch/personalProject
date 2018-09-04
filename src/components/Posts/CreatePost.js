@@ -41,16 +41,16 @@ class CreatePost extends Component {
                 {
                     this.props.user ?
                         <div className='newpost-main'>
-                            <textarea cols='40' rows='2' placeholder='Title' onChange={this.handleTitle} />
-                            <textarea cols='40' rows='2' placeholder='Picture Link' onChange={this.handlePicture} />
-                            <textarea cols='40' rows='20' placeholder='Content' onChange={this.handleContent} />
-                            <Link to='/posts'><button onClick={this.handleClick}>Create Post</button></Link>
+                            <input placeholder='Title' onChange={this.handleTitle} />
+                            <input placeholder='Picture Link' onChange={this.handlePicture} />
+                            <textarea className='content'  placeholder='Content' onChange={this.handleContent} />
+                            <Link to='/posts'><button onClick={this.handleClick} className='cancel-create' >Create Post</button></Link>
     
                             <br />
-                            <Link to='/posts'><button>Cancel</button></Link> 
+                            <Link to='/posts'><button className='cancel-create'>Cancel</button></Link> 
                         </div>
                         :
-                        <div className='newpost-login'>Please Log in to create post</div>
+                        <div className='newpost-login'>Please Login to create post</div>
 
             }
             </div>

@@ -1,16 +1,43 @@
-.App__parent {
+
+
+@media(max-width: 750px) {
+     .App__parent {
   width: 100%;
-  min-width: 1000px;
   min-height: 100vh;
-  margin-top: 13vh;
+  background-color: whitesmoke;
 }
 
 .App__content {
-  width: 1000px;
   margin: 0 auto;
-  min-height: calc( 100vh - 50px );
+  height: 100vh;
   box-sizing: border-box;
   padding: 20px;
   display: flex;
   flex-direction: column;
+}
+}
+@media(max-width: 768px) {
+    .App__parent {
+  width: 100%;
+  min-height: 100vh;
+  background-color: whitesmoke;
+}
+
+.App__content {
+  margin: 0 auto;
+  height: 100vh;
+  box-sizing: border-box;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+}
+}
+@media(min-width: 1000px) {
+  .App__parent {
+  padding-top: 15vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: whitesmoke;
+}
 }

@@ -24,7 +24,7 @@ class Compose extends Component {
     
     render() {
         return (
-            <section className="Compose__parent">
+            <section className="Compose-parent">
                 <div className="Compose__top">
 
                     <div className="Compose__profile-picture">
@@ -36,10 +36,8 @@ class Compose extends Component {
                         value={this.props.inputVal}
                         onChange={(e)=>this.props.handleChange(e.target.value)} />
 
-                </div>
+                    <button className='Compose' onClick={this.handleClick}>Compose</button>
 
-                <div className="Compose__bottom">
-                    <button onClick={this.handleClick}>Compose</button>
                 </div>
             </section>
         )

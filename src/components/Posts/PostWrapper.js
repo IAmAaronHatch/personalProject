@@ -25,18 +25,22 @@ class PostWrapper extends React.Component {
     render() {
         return (
             <div className='posts-container'>
-            <ToastContainer store={ToastStore} position={ToastContainer.POSITION.TOP_CENTER} lightBackground/>
+                <ToastContainer store={ToastStore} position={ToastContainer.POSITION.TOP_CENTER} lightBackground />
                 {this.props.currentlyDisplayed.map(post => {
                     return (
                         <div key={post.id} className='posts-box'>
                             <div className='posts-box-top'>
-                                <h3 onClick={() => this.props.openModal(post.id)}>{post.title}</h3>
-                                {
-                                    this.props.user ?
-                                        <MdBookmark onClick={() => { this.props.makeFavorite(post.id, this.props.user.id); ToastStore.success('Added To Favorites!');}} className='star'/>
-                                        :
-                                        null
-                                }
+                                <div className='posts-box-top-left'>
+                                    <h3 onClick={() => this.props.openModal(post.id)}>{post.title}</h3>
+                                </div>
+                                <div className='posts-box-top-right'>
+                                    {
+                                        this.props.user ?
+                                            <MdBookmark onClick={() => { this.props.makeFavorite(post.id, this.props.user.id); ToastStore.success('Added To Favorites!'); }} className='bookmark' />
+                                            :
+                                            null
+                                    }
+                                </div>
                             </div>
                             <img className='post-picture' src={post.picture} alt='post' onClick={() => this.props.openModal(post.id)} />
                             <hr />
