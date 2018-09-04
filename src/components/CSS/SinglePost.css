@@ -1,44 +1,68 @@
-/* 
-.post-main {
-    padding-top: 20px;
-    background-color: whitesmoke
-}
 
-.title-container {
-    display: flex;
-    flex-direction: column;
-    padding: 5px;
-}
-
-.user-info {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-}
-
-.title-info {
-    display: flex;
-    flex-direction: row;
-}
-
-.content-container {
-    padding: 5px;
-
-}
-
-.comment-container {
-    padding: 5px;
-} */
 @media(max-width: 767px){
     .singlePost-picture {
-        height: 200px;
-        width: 200px;
+        height: 300px;
+        width: 300px;
+    }
+    .content-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+    textarea {
+        height: 50px;
+        width: 300px;
+        border: 1px solid #2aabe2;
+        resize: none;
+    }
+    .content {
+        border: none;
+    }
+    .updatebtn {
+        background-color: whitesmoke;
+    }
+    .edit {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
     }
 }
 @media(max-width: 775px) {
     .singlePost-picture {
         height: 300px;
         width: 300px;
+    }
+    .content-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+    textarea {
+        height: 50px;
+        width: 300px;
+        border: 1px solid #2aabe2;
+        resize: none;
+        border-radius: 5px;
+    }
+    .content {
+        border: none;
+        background-color: white;
+    }
+    .updatebtn {
+        background-color: whitesmoke;
+    }
+    .edit {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+    .commentsection {
+        display: flex;
+        
     }
 }
 @media(min-width: 1000px) {
@@ -68,6 +92,7 @@
         display: flex;
         align-items: center;
         width: 100%;
+        flex-direction: column;
 
     }
     .edit-container {
@@ -79,6 +104,13 @@
     .edit-btn {
         padding-left: 20px;
     }
+    .updatebtn {
+        background-color: whitesmoke;
+    }
+    .content {
+        background-color: white;
+        width: 300px;
+    }
     
     .edit {
         display: flex;
@@ -87,7 +119,12 @@
         flex-direction: row;
     }
     textarea {
-        height: 20px;
+        height: 50px;
+        width: 300px;
+        border: 1px solid #2aabe2;
+        resize: none;
+        border-radius: 5px;
+        margin-bottom: 20px;
     }
     #updateContent {
         height: 40px;

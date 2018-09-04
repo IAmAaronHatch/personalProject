@@ -49,9 +49,12 @@ textarea {
     }
 .content {
         height: 200px;
-        width: 305px;
+        width: 295px;
         border: 1px solid #2aabe2;
         border-radius: 5px;
+    }
+    .cancel-create {
+        background-color: whitesmoke;
     }
     
 }
@@ -80,11 +83,13 @@ textarea {
     }
 .content {
         height: 300px;
-        width: 305px;
+        width: 295px;
         border: 1px solid #2aabe2;
         border-radius: 5px;
     }
-
+.cancel-create {
+        background-color: whitesmoke;
+    }
 }
 
 @media(min-width: 1000px) {

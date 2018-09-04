@@ -23,6 +23,7 @@ class PostWrapper extends React.Component {
 
 
     render() {
+        console.log(this.props.currentlyDisplayed)
         return (
             <div className='posts-container'>
                 <ToastContainer store={ToastStore} position={ToastContainer.POSITION.TOP_CENTER} lightBackground />

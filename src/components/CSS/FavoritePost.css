@@ -1,0 +1,15 @@
+.favorite-main {
+    padding-top: 15vh;
+    background-color: whitesmoke;
+    min-height: 100vh;
+}
+@media(max-width:767px){
+    .favorite-main{
+        /* padding-top: 10px; */
+    }
+}
+@media(max-width: 775px){
+    .favorite-main {
+        padding-top: 10px;
+    }
+}

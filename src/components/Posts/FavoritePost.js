@@ -3,22 +3,15 @@ import { connect } from 'react-redux'
 
 import { openModal, closeModal } from '../../redux/reducers/posts'
 import PostWrapper from './PostWrapper';
-
+import '../CSS/FavoritePost.css'
 class FavoritePost extends Component {
 
 
     render() {
         console.log(1111, this.props)
         return (
-            <div>
+            <div className='favorite-main'>
                 <PostWrapper currentlyDisplayed={this.props.favorites}/>
-                {/* {this.props.favorites.map(favorite => {
-                    return (
-                        <div>
-                        hello
-                        </div>
-                    )
-                })} */}
             </div>
         )
     }

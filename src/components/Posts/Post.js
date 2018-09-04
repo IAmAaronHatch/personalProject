@@ -93,7 +93,7 @@ class Post extends React.Component {
                                         this.state.updateOpen ?
                                             <div className='edit'>
                                                 <textarea cols='40' rows='1' onChange={this.handleTitle} />
-                                                <button onClick={this.handleUpdateTitle}>Update Title</button>
+                                                <button className='updatebtn' onClick={this.handleUpdateTitle}>Update Title</button>
                                                 <Link to='/posts'><Delete onClick={this.handleClick} /></Link>
                                             </div> :
                                             null
@@ -112,7 +112,7 @@ class Post extends React.Component {
                         this.state.updateOpen ?
                             <div className='edit'>
                                 <textarea id='updateContent' cols='100' rows='3' onChange={this.handleContent} />
-                                <button onClick={this.handleUpdateContent}>Update Content</button>
+                                <button className='updatebtn' onClick={this.handleUpdateContent}>Update Content</button>
                             </div> :
                             null
                     }
@@ -123,7 +123,7 @@ class Post extends React.Component {
 
                     {
                         this.props.user ?
-                            <div>
+                            <div className='commentsection'>
                                 <ChatBubble onClick={this.toggleComment}/>
                                 {
                                     this.state.commentOpen ? 

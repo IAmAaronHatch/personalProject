@@ -21,7 +21,6 @@ class Login extends Component {
             <div className='login-main'>
                 <div className='login-container'>
                     <div className='upper-login-container'>
-                        <div className='login-icon'>logo picture</div>
                         <img className='logo' src={logo} alt='logo'/>
                     </div>
                     <div className='lower-login-container'>
